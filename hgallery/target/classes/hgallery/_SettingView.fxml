@@ -7,15 +7,31 @@
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.effect.Bloom?>
 <?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<ScrollPane fx:id="scpane" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="-Infinity" pannable="true" prefHeight="491.0" prefWidth="660.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<ScrollPane fx:id="scp" hbarPolicy="NEVER" hmax="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="-Infinity" pannable="true" prefHeight="491.0" prefWidth="660.0" stylesheets="@style.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.SettingController">
    <content>
       <VBox prefHeight="494.0" prefWidth="658.0" style="-fx-background-color: black;">
          <children>
+            <Pane prefHeight="50.0" prefWidth="658.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="302.0" text="圖庫路徑設定" textFill="WHITE" underline="true">
+                     <tooltip>
+                        <Tooltip text="乳題" />
+                     </tooltip>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <Bloom threshold="0.97" />
+               </effect>
+            </Pane>
             <Pane prefHeight="50.0" prefWidth="658.0">
                <children>
                   <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="104.0" text="圖庫位置" textFill="WHITE">
@@ -23,7 +39,7 @@
                         <Tooltip text="預設的存檔路徑是 &lt;你的使用者帳戶&gt;/hgallery" />
                      </tooltip>
                   </Label>
-                  <TextField layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="GalleryPath" />
+                  <TextField fx:id="tf_galleryPath" layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="GalleryPath" />
                </children>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="658.0">
@@ -33,23 +49,48 @@
                         <Tooltip text="放本本的地方 yeeee" />
                      </tooltip>
                   </Label>
-                  <TextField layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="HentaiPath" />
+                  <TextField fx:id="tf_hentaiPath" layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="HentaiPath" />
                </children>
+            </Pane>
+            <Pane prefHeight="50.0" prefWidth="658.0" />
+            <Pane prefHeight="50.0" prefWidth="658.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="302.0" text="如果你想更改保險箱的密碼..." textFill="WHITE" underline="true">
+                     <tooltip>
+                        <Tooltip text="乳題" />
+                     </tooltip>
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+               <effect>
+                  <Bloom threshold="0.97" />
+               </effect>
             </Pane>
             <Pane prefHeight="50.0" prefWidth="658.0">
                <children>
-                  <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="104.0" text="保險箱密碼" textFill="WHITE">
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="104.0" text="原本的保險箱密碼" textFill="WHITE">
                      <tooltip>
                         <Tooltip text="你猜阿" />
                      </tooltip>
                   </Label>
-                  <PasswordField layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="Password" />
+                  <PasswordField fx:id="pf_oldpsw" layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="Old Password" />
                </children>
             </Pane>
-            <Pane prefHeight="50.0" prefWidth="658.0" />
+            <Pane prefHeight="50.0" prefWidth="658.0">
+               <children>
+                  <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="104.0" text="新的保險箱密碼" textFill="WHITE">
+                     <tooltip>
+                        <Tooltip text="你猜阿" />
+                     </tooltip>
+                  </Label>
+                  <PasswordField fx:id="pf_newpsw" layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="New Password" />
+               </children>
+            </Pane>
             <Pane prefHeight="77.0" prefWidth="658.0">
                <children>
-                  <Button layoutX="253.0" layoutY="11.0" mnemonicParsing="false" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="儲存">
+                  <Button layoutX="253.0" layoutY="11.0" mnemonicParsing="false" onAction="#SaveSettings" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="儲存">
                      <font>
                         <Font size="20.0" />
                      </font>
@@ -57,6 +98,11 @@
                         <Glow level="0.62" />
                      </effect>
                   </Button>
+                  <Label fx:id="lab_status" layoutX="390.0" layoutY="14.0" prefHeight="43.0" prefWidth="209.0" text="SAVE STATUS" textFill="WHITE" textOverrun="CLIP" wrapText="true">
+                     <tooltip>
+                        <Tooltip text="你猜阿" />
+                     </tooltip>
+                  </Label>
                </children>
             </Pane>
          </children>

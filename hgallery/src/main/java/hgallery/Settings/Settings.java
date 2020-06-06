@@ -11,11 +11,13 @@ public class Settings implements Serializable
 
     public String galleryPath = "/gallery";
     public String hentaiPath = "/hon";   
+    public String pswEncrypted = "";
     
     @Override
     public String toString()
     {
         return "galleryPath="+galleryPath+"\n"+
-                "hentaiPath="+hentaiPath;
+               "hentaiPath="+hentaiPath +"\n"+
+               "pswEncrypted="+pswEncrypted+"\n";
     }
 }

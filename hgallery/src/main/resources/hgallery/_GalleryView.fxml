@@ -5,7 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<ScrollPane fx:id="scpane" hbarPolicy="NEVER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="-Infinity" pannable="true" prefHeight="491.0" prefWidth="660.0" stylesheets="@style.css" vbarPolicy="ALWAYS" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/11.0.1" fx:controller="hgallery.GalleryController">
+<ScrollPane fx:id="scpane" hbarPolicy="NEVER" hmax="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="300.0" minWidth="-Infinity" pannable="true" prefHeight="491.0" prefWidth="660.0" stylesheets="@style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.GalleryController">
    <content>
       <GridPane fx:id="grid" hgap="15.0" prefHeight="300.0" prefWidth="645.0" style="-fx-background-color: black;" vgap="20.0">
         <columnConstraints>
