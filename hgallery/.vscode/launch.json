@@ -14,7 +14,7 @@
             "type": "java",
             "name": "Debug (Launch)-App<hgallery>",
             "request": "launch",
-            "mainClass": "com.JCxYIS.hgallery/com.JCxYIS.hgallery.App",
+            "mainClass": "com.JCxYIS.hgallery/hgallery.App",
             "projectName": "hgallery"
         }
     ]

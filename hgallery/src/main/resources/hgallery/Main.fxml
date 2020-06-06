@@ -140,9 +140,17 @@
             </Button>
          </children>
       </VBox>
-      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <StackPane alignment="CENTER_LEFT" layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="256.4" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <Pane prefHeight="554.0" prefWidth="793.0">
+            <AnchorPane fx:id="container">
+               <StackPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="65.0" />
+               </StackPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="62.0" prefWidth="794.0" style="-fx-background-color: black;" StackPane.alignment="TOP_LEFT">
                <children>
                   <Label fx:id="title" layoutX="31.0" layoutY="22.0" text="標題" textFill="#e7e5e5">
                      <font>
@@ -154,14 +162,6 @@
                   <Insets />
                </StackPane.margin>
             </Pane>
-            <AnchorPane fx:id="container">
-               <StackPane.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="65.0" />
-               </StackPane.margin>
-               <opaqueInsets>
-                  <Insets />
-               </opaqueInsets>
-            </AnchorPane>
          </children>
       </StackPane>
    </children>
