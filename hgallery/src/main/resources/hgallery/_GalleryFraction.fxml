@@ -4,16 +4,16 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 
-<AnchorPane prefHeight="200.0" prefWidth="164.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="item" prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button minWidth="99.0" mnemonicParsing="false" prefWidth="172.0" stylesheets="@style.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <ImageView fitHeight="112.0" fitWidth="89.0" layoutX="44.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true" AnchorPane.topAnchor="14.0">
+      <Button mnemonicParsing="false" prefHeight="300.0" prefWidth="200.0" stylesheets="@style.css" />
+      <ImageView fitHeight="198.0" fitWidth="136.0" layoutX="32.0" layoutY="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/testAssets/testHgCover.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="14.0" layoutY="143.0" prefHeight="42.0" prefWidth="73.0" text="AAAAAAA33AAAAAAA33AAAAAAA33&#10;" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="143.0" />
+      <Label layoutX="19.0" layoutY="224.0" mouseTransparent="true" prefHeight="69.0" prefWidth="162.0" text="[HappyBirthday (MARUchang)] C'MON BABY Albacore (Azur Lane)&#10;" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true" />
    </children>
-</AnchorPane>
+</Pane>

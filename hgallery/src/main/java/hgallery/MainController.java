@@ -73,8 +73,9 @@ public class MainController implements Initializable
         if(sauce == butt_gallery)
         {
             SetTitle("我的相簿");
-            var a = LoadFXML("_GalleryFraction.fxml");
-            container.getChildren().add((Node) a);    
+            Node gal = (Node)LoadFXML("_GalleryView.fxml");
+            container.getChildren().add(gal); 
+            gal.autosize();
         }
         else if(sauce == butt_search)
         {
@@ -101,7 +102,6 @@ public class MainController implements Initializable
             // TODO Hentai
             SetTitle("危險的地方");
         }
-        
     }
 
     private Object LoadFXML(String s)
@@ -115,6 +115,11 @@ public class MainController implements Initializable
             Debug.Log(e, ConsoleColor.RED);
             return null;
         }
+    }
+
+    public static AnchorPane GetContainer()
+    {
+        return instance.container;
     }
 
 
