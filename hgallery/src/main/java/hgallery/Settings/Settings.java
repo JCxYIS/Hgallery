@@ -6,9 +6,19 @@ public class Settings implements Serializable
 {
     private static final long serialVersionUID = 3L;
 
-    public String galleryPath = "/gallery";
-    public String hentaiPath = "/hon";   
+    public String galleryPath = "";
+    public String hentaiPath = "";   
     public String pswEncrypted = "";
+
+    /**
+     * Default Values
+     */
+    public Settings()
+    {
+        galleryPath = SettingManager.saveDir + "\\Gallery";
+        hentaiPath = SettingManager.saveDir + "\\Hentai";
+        pswEncrypted = "";
+    }
     
     @Override
     public String toString()
