@@ -25,14 +25,14 @@ public class GalleryController
     @FXML
     private void initialize()
     {
-        Resize();
+        Print();
     }
 
     /**
-     * 重新製作大小
+     * 重新製作
      */
     @FXML
-    private void Resize()
+    private void Print()
     {
         Debug.Log("RESIZING GALLERY...");
         int albumCount = 41;
