@@ -14,7 +14,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="576.0" prefWidth="1050.0" style="-fx-background-color: #02030A;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.MainController">
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="576.0" prefWidth="256.0" style="-fx-background-color: #05071F;" AnchorPane.bottomAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -37,7 +37,7 @@
                   <Insets />
                </VBox.margin>
             </VBox>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="我的相簿" textFill="#e5e5e5">
+            <Button fx:id="butt_gallery" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="我的相簿" textFill="#e5e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="23.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -58,7 +58,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="搜尋" textFill="#e5e5e5">
+            <Button fx:id="butt_search" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="搜尋" textFill="#e5e5e5">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -73,7 +73,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="垃圾桶">
+            <Button fx:id="butt_trash" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="垃圾桶">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -88,7 +88,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="設定">
+            <Button fx:id="butt_setting" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="設定">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -103,19 +103,12 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css">
-               <graphic>
-                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/icons8_Box_32px.png" />
-                     </image>
-                  </ImageView>
-               </graphic>
+            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" visible="false">
                <padding>
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="保險箱">
+            <Button fx:id="butt_safebox" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="保險箱">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -130,7 +123,7 @@
                   <Insets left="50.0" />
                </padding>
             </Button>
-            <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="退斯妥也老司機">
+            <Button fx:id="butt_hentai" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="退斯妥也老司機">
                <graphic>
                   <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -147,17 +140,28 @@
             </Button>
          </children>
       </VBox>
-      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;">
+      <StackPane layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <Pane prefHeight="554.0" prefWidth="793.0">
                <children>
-                  <Label layoutX="57.0" layoutY="25.0" text="標題" textFill="#e7e5e5">
+                  <Label fx:id="title" layoutX="31.0" layoutY="22.0" text="標題" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
                </children>
+               <StackPane.margin>
+                  <Insets />
+               </StackPane.margin>
             </Pane>
+            <AnchorPane fx:id="container">
+               <StackPane.margin>
+                  <Insets bottom="20.0" left="20.0" right="20.0" top="65.0" />
+               </StackPane.margin>
+               <opaqueInsets>
+                  <Insets />
+               </opaqueInsets>
+            </AnchorPane>
          </children>
       </StackPane>
    </children>
