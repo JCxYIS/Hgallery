@@ -2,12 +2,9 @@ package hgallery.Settings;
 
 import java.io.Serializable;
 
-import hgallery.Debug;
-import hgallery.Debug.ConsoleColor;
-
 public class Settings implements Serializable
 {
-    private static final String serialVersionUID = "save_v.1.0";
+    private static final long serialVersionUID = 3L;
 
     public String galleryPath = "/gallery";
     public String hentaiPath = "/hon";   

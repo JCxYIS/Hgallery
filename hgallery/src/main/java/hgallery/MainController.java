@@ -47,6 +47,9 @@ public class MainController implements Initializable
     @FXML
     private AnchorPane container;
 
+    @FXML
+    private Label lab_ver;
+
 
 
 
@@ -144,6 +147,7 @@ public class MainController implements Initializable
     public void initialize(URL location, ResourceBundle resources) 
     {
         instance = this;
+        lab_ver.setText("JCxYIS  |  "+App.version);
         // SetTitle("fuck");
     }
     

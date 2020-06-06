@@ -155,6 +155,11 @@
             </Button>
          </children>
       </VBox>
+      <Pane layoutY="556.0" prefHeight="22.0" prefWidth="256.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0">
+         <children>
+            <Label fx:id="lab_ver" alignment="CENTER" contentDisplay="CENTER" layoutX="43.0" layoutY="4.0" prefHeight="15.0" prefWidth="171.0" text="JCxYIS 2020 | VERSION" textFill="WHITE" textOverrun="CLIP" />
+         </children>
+      </Pane>
       <StackPane alignment="CENTER_LEFT" layoutX="258.0" prefHeight="576.0" prefWidth="793.0" style="-fx-background-color: #02030A;" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="256.4" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="container">
