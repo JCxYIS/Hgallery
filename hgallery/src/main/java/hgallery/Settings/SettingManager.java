@@ -17,7 +17,7 @@ public class SettingManager
     public static void Load()
     {
         // init savePath
-        saveDir = System.getProperty("user.home") + "\\hgallery";
+        saveDir = System.getProperty("user.home") + "\\Hgallery";
         File directory = new File(saveDir);
         if ( !directory.exists() )
         {
