@@ -1,5 +1,8 @@
 ## References
 
+##Encryption
+- PBKDF2 encryption from https://www.cnblogs.com/interdrp/p/4935819.html
+
 ## UI
 - Main User Interface is modified from https://github.com/k33ptoo/RestaurantMgtSampleUI
 
