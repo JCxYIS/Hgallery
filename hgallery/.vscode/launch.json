@@ -1,0 +1,21 @@
+{
+    // 使用 IntelliSense 以得知可用的屬性。
+    // 暫留以檢視現有屬性的描述。
+    // 如需詳細資訊，請瀏覽: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Debug (Launch) - Current File",
+            "request": "launch",
+            "mainClass": "${file}"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)-App<hgallery>",
+            "request": "launch",
+            "mainClass": "com.JCxYIS.hgallery/com.JCxYIS.hgallery.App",
+            "projectName": "hgallery"
+        }
+    ]
+}
