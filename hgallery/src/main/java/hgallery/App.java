@@ -11,6 +11,8 @@ import javafx.stage.StageStyle;
 import java.io.IOException;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.Settings.SettingManager;
+import hgallery.Settings.Settings;
 
 /**
  * JavaFX App
@@ -22,6 +24,7 @@ public class App extends Application {
 
     public static void main(String[] args) 
     {
+        SettingManager.Load();
         launch();
     }
 
@@ -40,6 +43,13 @@ public class App extends Application {
         // show
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop()
+    {
+        Debug.Log("掰掰！", ConsoleColor.GREEN);
+        SettingManager.Save();
     }
     
 
