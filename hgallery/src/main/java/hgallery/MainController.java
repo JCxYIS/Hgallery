@@ -73,9 +73,7 @@ public class MainController implements Initializable
         if(sauce == butt_gallery)
         {
             SetTitle("我的相簿");
-            Node gal = (Node)LoadFXML("_GalleryView.fxml");
-            container.getChildren().add(gal); 
-            gal.autosize();
+            SetFXML("_GalleryView.fxml");
         }
         else if(sauce == butt_search)
         {
@@ -85,12 +83,12 @@ public class MainController implements Initializable
         else if(sauce == butt_trash)
         {
             // TODO trash
-            SetTitle("垃圾桶");
+            SetTitle("垃圾桶");            
         }
         else if(sauce == butt_setting)
         {
-            // TODO config
             SetTitle("設定");
+            SetFXML("_SettingView.fxml");
         }
         else if(sauce == butt_safebox)
         {
@@ -104,6 +102,18 @@ public class MainController implements Initializable
         }
     }
 
+    /**
+     * 把某個FXML設為container內的東東
+     */
+    private void SetFXML(String s)
+    {
+        Node gal = (Node)LoadFXML(s);
+        container.getChildren().add(gal); 
+    }
+
+    /**
+     * 
+     */
     private Object LoadFXML(String s)
     {
         try
