@@ -42,18 +42,11 @@ public class App extends Application {
         stage.show();
     }
     
-    /**
-     * 設定場景
-     */
-    static void SetRoot(String fxml) throws IOException 
-    {
-        scene.setRoot(LoadFXML(fxml));
-    }
 
     /**
      * 讀取fxml
      */
-    private static Parent LoadFXML(String fxml) throws IOException 
+    private static Parent LoadFXML(String fxml) 
     {
         try
         {
@@ -63,7 +56,7 @@ public class App extends Application {
         catch (Exception e)
         {
             Debug.Log(e, ConsoleColor.RED);
-            Debug.Log("很可能是fxml ("+fxml+") 不存在喔", ConsoleColor.YELLOW);
+            Debug.Log("可能是fxml ("+fxml+") 不存在？", ConsoleColor.YELLOW);
             return null;
         }
     }
