@@ -38,7 +38,7 @@ public class App extends Application {
 
         // set icon
         stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
-        stage.setTitle("hgallery");
+        stage.setTitle("Hgallery");
 
         // show
         stage.setScene(scene);
