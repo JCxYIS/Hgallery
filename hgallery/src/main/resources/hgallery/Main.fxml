@@ -28,7 +28,7 @@
                         <ColorAdjust brightness="1.0" />
                      </effect>
                   </ImageView>
-                  <Label text="hgallery" textFill="#e7e5e5" />
+                  <Label text="Hgallery" textFill="#e7e5e5" />
                </children>
                <effect>
                   <Glow level="1.0" />
@@ -152,12 +152,12 @@
             </AnchorPane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="62.0" prefWidth="794.0" style="-fx-background-color: black;" StackPane.alignment="TOP_LEFT">
                <children>
-                  <Label fx:id="title" layoutX="31.0" layoutY="22.0" text="標題" textFill="#e7e5e5">
+                  <Label fx:id="title" layoutX="31.0" layoutY="22.0" text="歡迎使用 Hgallery！選擇左側選單開始你的冒險！" textFill="#e7e5e5">
                      <font>
                         <Font size="24.0" />
                      </font>
                      <effect>
-                        <Glow level="0.95" />
+                        <Glow level="0.6" />
                      </effect>
                   </Label>
                </children>
