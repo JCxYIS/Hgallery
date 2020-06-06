@@ -98,7 +98,7 @@ public class MainController implements Initializable
         else if(sauce == butt_hentai)
         {
             // TODO Hentai
-            SetTitle("危險的地方");
+            SetTitle("高速公路");
         }
     }
 
