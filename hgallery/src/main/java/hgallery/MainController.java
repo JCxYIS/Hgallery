@@ -30,6 +30,9 @@ public class MainController implements Initializable
     private Button butt_trash;
 
     @FXML
+    private Button butt_import;
+
+    @FXML
     private Button butt_setting;
 
     @FXML
@@ -84,6 +87,11 @@ public class MainController implements Initializable
         {
             // TODO trash
             SetTitle("垃圾桶");            
+        }
+        else if(sauce == butt_import)
+        {
+            // TODO import
+            SetTitle("匯入");            
         }
         else if(sauce == butt_setting)
         {
