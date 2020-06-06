@@ -45,8 +45,8 @@ public class GalleryController
             // new row
             if(col == 0 && row != 0)
             {
-                grid.setPrefHeight(grid.getPrefHeight() + 300);
-                grid.getRowConstraints().add(new RowConstraints(300)); // column 2 is 200 wide
+                grid.setPrefHeight(grid.getPrefHeight() + 320); // gap
+                grid.getRowConstraints().add(new RowConstraints(300)); // column is 200 wide
                 //Debug.Log(grid.getPrefHeight());
             }
 

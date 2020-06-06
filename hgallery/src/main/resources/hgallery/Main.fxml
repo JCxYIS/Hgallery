@@ -156,6 +156,9 @@
                      <font>
                         <Font size="24.0" />
                      </font>
+                     <effect>
+                        <Glow level="0.95" />
+                     </effect>
                   </Label>
                </children>
                <StackPane.margin>
