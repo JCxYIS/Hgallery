@@ -4,7 +4,9 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 
@@ -27,7 +29,15 @@ public class App extends Application {
     public void start(Stage stage) throws IOException 
     {
         Debug.Log("Starting...", ConsoleColor.GREEN);
+
+        // load fxml
         scene = new Scene( LoadFXML("Main") );
+
+        // set icon
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
+        stage.setTitle("hgallery");
+
+        // show
         stage.setScene(scene);
         stage.show();
     }
