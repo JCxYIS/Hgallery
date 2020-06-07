@@ -119,7 +119,10 @@ public class MainController implements Initializable
     private void SetFXML(String s)
     {
         Node gal = (Node)LoadFXML(s);
-        container.getChildren().add(gal); 
+        container.getChildren().add(gal);
+
+        // make the new item fit to the screen
+        ControllerUtility.FitAnchorPlane(gal);
     }
 
     /**
