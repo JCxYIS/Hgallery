@@ -1,21 +1,25 @@
 package hgallery;
 
+import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
+import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.Encryption.Encryption;
 import hgallery.Settings.SettingManager;
-import hgallery.Settings.Settings;
 import javafx.fxml.FXML;
+import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 
-public class SettingController 
+public class SettingController
 {
-    @FXML private ScrollPane scp;
+    @FXML private ScrollPane sp;
+    @FXML private AnchorPane ap;
 
     @FXML private TextField tf_galleryPath;
     @FXML private TextField tf_hentaiPath;
@@ -26,16 +30,16 @@ public class SettingController
     @FXML private Label lab_status;
 
 
-
     @FXML
     private void initialize() 
     {
+        // init params
         lab_status.setText("");
         tf_galleryPath.setText(SettingManager.settings.galleryPath);
         tf_hentaiPath.setText(SettingManager.settings.hentaiPath);
 
-        if(SettingManager.settings.pswEncrypted.equals(""))
-        {
+        //
+        if (SettingManager.settings.pswEncrypted.equals("")) {
             pf_oldpsw.setDisable(true);
             pf_oldpsw.setPromptText("你不用輸入舊密碼！請直接設定新密碼！");
         }
@@ -44,9 +48,20 @@ public class SettingController
     }
 
     @FXML
+    private void RefreshSize()
+    {
+        // set size
+        var w = sp.getWidth();
+        var h = sp.getHeight();
+        ap.setPrefSize(w, h);
+        //Debug.Log(w+ ", "+ h);
+    }
+
+
+    @FXML
     private void SaveSettings() throws NoSuchAlgorithmException, InvalidKeySpecException
     {
-        String output = "";
+        String output = "";        
 
         SettingManager.settings.galleryPath = tf_galleryPath.getText();
         SettingManager.settings.hentaiPath = tf_hentaiPath.getText();

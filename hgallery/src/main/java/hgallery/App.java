@@ -45,7 +45,7 @@ public class App extends Application
 
         // show
         stage.setScene(scene);
-        stage.setResizable(false);
+        //stage.setResizable(false);
         stage.show();
     }
 
