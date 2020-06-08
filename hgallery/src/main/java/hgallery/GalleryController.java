@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.File.FileOperate;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -41,8 +42,9 @@ public class GalleryController
     {
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
 
-        int albumCount = 10;
-        for(int i = 0; i < albumCount; i++)
+        String[] dirs = FileOperate.GetGallerys();
+
+        for(int i = 0; i < dirs.length; i++)
         {
             try
             {
