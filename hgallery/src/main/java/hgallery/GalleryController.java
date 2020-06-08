@@ -2,6 +2,7 @@ package hgallery;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
@@ -19,7 +20,11 @@ import javafx.scene.layout.RowConstraints;
 
 public class GalleryController 
 {
+    @FXML private ScrollPane sp;
     @FXML private GridPane grid;
+
+    private ArrayList<Node> albums = new ArrayList<Node>();
+    private double lastWidth = 0, lastHeight = 0;
 
 
     @FXML
@@ -29,31 +34,19 @@ public class GalleryController
     }
 
     /**
-     * 重新製作
+     * 製作GALLERY清單
      */
-    @FXML
     private void Print()
     {
-        Debug.Log("RESIZING GALLERY...");
-        int albumCount = 41;
-        
+        Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
+
+        int albumCount = 10;
         for(int i = 0; i < albumCount; i++)
         {
-            int col = i%3;
-            int row = i/3;            
-            
-            // new row
-            if(col == 0 && row != 0)
-            {
-                grid.setPrefHeight(grid.getPrefHeight() + 320); // gap
-                grid.getRowConstraints().add(new RowConstraints(300)); // column is 200 wide
-                //Debug.Log(grid.getPrefHeight());
-            }
-
             try
             {
                 Node newItem = FXMLLoader.load(getClass().getResource("_GalleryFraction.fxml"));
-                grid.add(newItem, col, row);
+                albums.add(newItem);
             }
             catch (IOException e)
             {
@@ -61,4 +54,63 @@ public class GalleryController
             }
         }
     }
+
+    /**
+     * 重新調整GALLERY大小
+     */
+    @FXML
+    private void Resize()
+    {
+        // grid: Fit the parent
+        var w = sp.getWidth();
+        var h = sp.getHeight();
+        grid.setPrefSize(w, h);
+
+        // calc each row can fit in how many hentais
+        double parentw = grid.getWidth();
+        double childw = albums.get(0).getBoundsInLocal().getWidth();
+        int hCapicity = (int)(parentw / childw) + 1;
+        Debug.Log(parentw + " / "+ childw + " = " + hCapicity);
+ 
+        // determine if we need to resize
+        if(lastHeight != grid.getHeight() && lastWidth != grid.getWidth())
+        {
+            lastHeight = grid.getHeight();
+            lastWidth = grid.getWidth();
+            Debug.Log("重新調整GALLERY大小...", ConsoleColor.GREEN); 
+        }
+        else
+        {
+            return;
+        }
+        
+
+        for(int i = 0; i < albums.size(); i++)
+        {
+            int col = i%hCapicity;
+            int row = i/hCapicity;     
+            
+            // new row
+            if(col == 0 && row != 0)
+            {
+                grid.setPrefHeight(grid.getPrefHeight() + 320); // 300 + gap
+                grid.getRowConstraints().add(new RowConstraints(300)); // column is 300 wide
+                //Debug.Log(grid.getPrefHeight());
+            }
+
+            //
+            try
+            {
+                grid.add(albums.get(i), col, row);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(""+e.getMessage(), ConsoleColor.RED);
+            }
+        }
+    }
+
+
+
+
 }
