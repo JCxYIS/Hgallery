@@ -5,6 +5,6 @@
 
 <ScrollPane fx:id="sp" hbarPolicy="NEVER" hmax="0.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" onMouseEntered="#Resize" pannable="true" prefHeight="491.0" prefWidth="660.0" stylesheets="@style.css" vbarPolicy="ALWAYS" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.GalleryController">
    <content>
-      <TilePane fx:id="container" hgap="25.0" prefHeight="9999.0" prefWidth="9999.0" style="-fx-background-color: black;" vgap="25.0" />
+      <TilePane fx:id="container" hgap="25.0" prefColumns="9999" prefHeight="9999.0" prefRows="9999" prefTileHeight="300.0" prefTileWidth="200.0" prefWidth="9999.0" style="-fx-background-color: black;" vgap="25.0" />
    </content>
 </ScrollPane>
