@@ -7,6 +7,8 @@ import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.File.FileOperate;
+import javafx.application.Platform;
+import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -26,13 +28,23 @@ public class GalleryController
     @FXML private TilePane container;
 
     private ArrayList<Node> albums = new ArrayList<Node>();
-    private double lastWidth = 0, lastHeight = 0;
 
 
     @FXML
     private void initialize()
     {
         Print();
+
+        Platform.runLater(new Runnable() 
+        {
+            @Override 
+            public void run() 
+            {
+                Debug.Log("具現化GALLERY");
+                Resize();    
+            }
+        });
+        //new Thread(task).start();
     }
 
     /**
@@ -42,18 +54,41 @@ public class GalleryController
     {
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
 
+        // get directories
         String[] dirs = FileOperate.GetGallerys();
 
+        // print it
         for(int i = 0; i < dirs.length; i++)
         {
             try
             {
-                Node newItem = FXMLLoader.load(getClass().getResource("_GalleryFraction.fxml"));
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
+                Node newItem = fxmlLoader.load();
+                
+                // Set properties of this album
+                GalleryFractionController c = fxmlLoader.getController();
+                c.Set(dirs[i], "Not implemented"); //TODO
+
+
                 albums.add(newItem);
             }
-            catch (IOException e)
+            catch (Exception e)
             {
                 Debug.Log(e, ConsoleColor.RED);
+            }
+        }
+
+        // 讓每個album放進container
+        for(int i = 0; i < albums.size(); i++)
+        {
+            try
+            {
+                //grid.add(albums.get(i), col, row);
+                container.getChildren().add(albums.get(i));
+            }
+            catch (Exception e)
+            {
+                Debug.Log(""+e.getMessage(), ConsoleColor.RED);
             }
         }
     }
@@ -91,19 +126,7 @@ public class GalleryController
         */
         
         // 加起來
-        for(int i = 0; i < albums.size(); i++)
-        {
-            //
-            try
-            {
-                //grid.add(albums.get(i), col, row);
-                container.getChildren().add(albums.get(i));
-            }
-            catch (Exception e)
-            {
-                //Debug.Log(""+e.getMessage(), ConsoleColor.RED);
-            }
-        }
+        
     }
 
 

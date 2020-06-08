@@ -6,14 +6,14 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 
-<Pane fx:id="item" prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<Pane prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.GalleryFractionController">
    <children>
       <Button mnemonicParsing="false" prefHeight="300.0" prefWidth="200.0" stylesheets="@style.css" />
-      <ImageView fitHeight="198.0" fitWidth="136.0" layoutX="32.0" layoutY="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="img" fitHeight="198.0" fitWidth="136.0" layoutX="32.0" layoutY="23.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/testAssets/testHgCover.jpg" />
          </image>
       </ImageView>
-      <Label layoutX="19.0" layoutY="224.0" mouseTransparent="true" prefHeight="69.0" prefWidth="162.0" text="[HappyBirthday (MARUchang)] C'MON BABY Albacore (Azur Lane)&#10;" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true" />
+      <Label fx:id="label" layoutX="19.0" layoutY="224.0" mouseTransparent="true" prefHeight="69.0" prefWidth="162.0" text="[HappyBirthday (MARUchang)] C'MON BABY Albacore (Azur Lane)&#10;" textAlignment="CENTER" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true" />
    </children>
 </Pane>
