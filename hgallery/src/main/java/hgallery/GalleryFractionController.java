@@ -13,15 +13,22 @@ public class GalleryFractionController
     @FXML private ImageView img;
     @FXML private Label label;
 
-    public void Set(String labelName, String thumbPicPath) throws MalformedURLException
+    /**
+     * 相簿的資料夾位置
+     */
+    private File galleryDirPath;
+
+    public void Set(File galleryDirPath, File thumbPicPath) throws MalformedURLException
     {
+        // set 
+        this.galleryDirPath = galleryDirPath;
+
         // set label
-        label.setText(labelName);
+        label.setText(galleryDirPath.getName());
 
         // set image
-        File file = new File(thumbPicPath);
-        String localUrl = file.toURI().toURL().toString();
-        Debug.Log(localUrl);
-        img.setImage(new Image(localUrl));
+        String localUrl = thumbPicPath.toURI().toURL().toString();
+        //Debug.Log(localUrl);
+        img.setImage(new Image(localUrl, true));
     }
 }

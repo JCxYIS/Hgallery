@@ -10,9 +10,29 @@ import hgallery.Settings.SettingManager;
 
 public class FileOperate 
 {
-    public static String[] GetGallerys()
+    /**
+     * 回傳所有GALLERY的資料夾
+     */
+    public static File[] GetGallerys()
     {
-        File galleryPath = new File(SettingManager.settings.galleryPath);
+        return GetAlbums(SettingManager.settings.galleryPath);
+    }
+
+    /**
+     * 回傳所有HENTAI的資料夾
+     */
+    public static File[] GetHentais()
+    {
+        return GetAlbums(SettingManager.settings.hentaiPath);
+    }
+
+    /**
+     * 
+     */
+    private static File[] GetAlbums(String albumPath)
+    {
+        // 
+        File galleryPath = new File(albumPath);
 
         // create folder
         if(!galleryPath.exists())
@@ -22,7 +42,7 @@ public class FileOperate
         }
 
         // Get dir paths
-        String[] directories = galleryPath.list(new FilenameFilter() 
+        File[] directories = galleryPath.listFiles(new FilenameFilter() 
         {
             @Override
             public boolean accept(File current, String name) 
@@ -32,7 +52,7 @@ public class FileOperate
         });
     
         // return
-        System.out.println("所求的資料夾："+Arrays.toString(directories));
+        //System.out.println("所求的資料夾："+Arrays.toString(directories));
         return directories; 
     }
 }
