@@ -24,13 +24,18 @@ public class AlbumReader
     /**
      * 取得縮圖連結。沒有的話會建一個：失敗會return null
      */
-    public static String GetThumbnailPath(String albumName) 
+    public static File GetThumbnailPath(File albumDirPath) 
     {
+        return albumDirPath.listFiles()[0];
+
+        // 現在可以不用，因為JAVAFX的讀圖
+        /*
         File f = new File(SettingManager.settings.galleryPath + "\\_thumbnails\\"+albumName+".jpg");
 
         if(f.exists()) // return it
         {
-            return f.getAbsolutePath();
+            //return new File( SettingManager.settings.galleryPath+"\\"+albumName ).listFiles()[0].getAbsolutePath(); // ORIGINAL
+            return f; // THUMB
         }
         else // create it
         {
@@ -41,7 +46,7 @@ public class AlbumReader
 
                 Debug.Log("正在製作縮圖："+albumName+" 的 "+picToMakeAlbum.getName(), ConsoleColor.PURPLE);
                 CreateThumbnail.CreateThumbnail(picToMakeAlbum.getAbsolutePath(), f.getAbsolutePath());
-                return f.getAbsolutePath();
+                return f;
             }
             catch (Exception e)
             {
@@ -50,5 +55,6 @@ public class AlbumReader
             }
             
         }
+        */
     }
 }

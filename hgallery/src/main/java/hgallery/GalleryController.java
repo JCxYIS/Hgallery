@@ -1,5 +1,6 @@
 package hgallery;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -56,7 +57,7 @@ public class GalleryController
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
 
         // get directories
-        String[] dirs = FileOperate.GetGallerys();
+        File[] dirs = FileOperate.GetGallerys();
 
         // print it
         for(int i = 0; i < dirs.length; i++)
@@ -64,7 +65,7 @@ public class GalleryController
             try
             {
                 // special folder! skip
-                if(dirs[i].equals("_thumbnails"))
+                if(dirs[i].getName().equals("_thumbnails"))
                     continue;
 
                 // make fraction (node)
@@ -73,7 +74,7 @@ public class GalleryController
                 
                 // Set properties of this album
                 GalleryFractionController c = fxmlLoader.getController();
-                c.Set(dirs[i], AlbumReader.GetThumbnailPath(dirs[i])); 
+                c.Set( dirs[i], AlbumReader.GetThumbnailPath(dirs[i]) );
 
                 // add.
                 albums.add(newItem);
