@@ -17,11 +17,12 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.RowConstraints;
+import javafx.scene.layout.TilePane;
 
 public class GalleryController 
 {
     @FXML private ScrollPane sp;
-    @FXML private GridPane grid;
+    @FXML private TilePane container;
 
     private ArrayList<Node> albums = new ArrayList<Node>();
     private double lastWidth = 0, lastHeight = 0;
@@ -64,48 +65,41 @@ public class GalleryController
         // grid: Fit the parent
         var w = sp.getWidth();
         var h = sp.getHeight();
-        grid.setPrefSize(w, h);
+        container.setPrefSize(w, h);
+        Debug.Log("重新計算GALLERY視窗：寬度"+w);
 
+        /* TILEPANE 好好用
         // calc each row can fit in how many hentais
-        double parentw = grid.getWidth();
-        double childw = albums.get(0).getBoundsInLocal().getWidth();
+        double parentw = w;
+        double childw = 200; //albums.get(0).getBoundsInLocal().getWidth();
         int hCapicity = (int)(parentw / childw) + 1;
         Debug.Log(parentw + " / "+ childw + " = " + hCapicity);
  
         // determine if we need to resize
-        if(lastHeight != grid.getHeight() && lastWidth != grid.getWidth())
+        if(lastHeight != container.getHeight() && lastWidth != container.getWidth())
         {
-            lastHeight = grid.getHeight();
-            lastWidth = grid.getWidth();
+            lastHeight = container.getHeight();
+            lastWidth = container.getWidth();
             Debug.Log("重新調整GALLERY大小...", ConsoleColor.GREEN); 
         }
         else
         {
             return;
         }
+        */
         
-
+        // 加起來
         for(int i = 0; i < albums.size(); i++)
         {
-            int col = i%hCapicity;
-            int row = i/hCapicity;     
-            
-            // new row
-            if(col == 0 && row != 0)
-            {
-                grid.setPrefHeight(grid.getPrefHeight() + 320); // 300 + gap
-                grid.getRowConstraints().add(new RowConstraints(300)); // column is 300 wide
-                //Debug.Log(grid.getPrefHeight());
-            }
-
             //
             try
             {
-                grid.add(albums.get(i), col, row);
+                //grid.add(albums.get(i), col, row);
+                container.getChildren().add(albums.get(i));
             }
             catch (Exception e)
             {
-                Debug.Log(""+e.getMessage(), ConsoleColor.RED);
+                //Debug.Log(""+e.getMessage(), ConsoleColor.RED);
             }
         }
     }
