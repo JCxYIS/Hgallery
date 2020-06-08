@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
+import hgallery.AlbumReader.AlbumReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.File.FileOperate;
 import javafx.application.Platform;
@@ -62,14 +63,19 @@ public class GalleryController
         {
             try
             {
+                // special folder! skip
+                if(dirs[i].equals("_thumbnails"))
+                    continue;
+
+                // make fraction (node)
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
                 Node newItem = fxmlLoader.load();
                 
                 // Set properties of this album
                 GalleryFractionController c = fxmlLoader.getController();
-                c.Set(dirs[i], "Not implemented"); //TODO
+                c.Set(dirs[i], AlbumReader.GetThumbnailPath(dirs[i])); 
 
-
+                // add.
                 albums.add(newItem);
             }
             catch (Exception e)

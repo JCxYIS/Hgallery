@@ -19,7 +19,7 @@ import hgallery.Settings.Settings;
  */
 public class App extends Application 
 {
-    public static final String version = "v.0.16";
+    public static final String version = "v.0.18";
 
 
     private static Scene scene;
