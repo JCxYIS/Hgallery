@@ -1,7 +1,10 @@
 ## References
 
-##Encryption
+## Encryption
 - PBKDF2 encryption from https://www.cnblogs.com/interdrp/p/4935819.html
+
+## Thumbnail Creation
+- http://www.java2s.com/Tutorials/Java/Graphics_How_to/Image/Create_thumbnail_views_of_images.htm
 
 ## UI
 - Main User Interface is modified from https://github.com/k33ptoo/RestaurantMgtSampleUI
