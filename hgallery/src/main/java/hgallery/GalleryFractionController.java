@@ -43,7 +43,7 @@ public class GalleryFractionController
         // set button thumbnail
         String localUrl = thumbPicPath.toURI().toURL().toString();
         //Debug.Log(localUrl);
-        img.setImage(new Image(localUrl, true));
+        img.setImage(new Image(localUrl, 0, 400, true, true, true));
     }
 
     @FXML 
