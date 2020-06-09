@@ -202,14 +202,15 @@ public class PageViewController {
     {
         var k = event.getCode();
 
-        if(k == KeyCode.PLUS || k == KeyCode.ADD)
+        if(k == KeyCode.EQUALS || k == KeyCode.PLUS || k == KeyCode.ADD)
         {
             scaleMultipler += 0.25;
             Debug.Log("PLUS | ScaleMultipler="+scaleMultipler, ConsoleColor.BLUE);
         }
         if(k == KeyCode.MINUS || k == KeyCode.SUBTRACT)
         {
-            scaleMultipler -= 0.25;
+            if(scaleMultipler > 0.25)
+                scaleMultipler -= 0.25;
             Debug.Log("MINUS | ScaleMultipler="+scaleMultipler, ConsoleColor.BLUE);
         }
 
@@ -239,6 +240,12 @@ public class PageViewController {
             stage.close();
             Debug.Log("ESC | QUIT", ConsoleColor.BLUE);
         }
+        if(k == KeyCode.F11)
+        {
+            stage.setFullScreen(!stage.isFullScreen());;
+        }
+
+        Resize();
     }
 
 

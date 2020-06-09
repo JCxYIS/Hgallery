@@ -1,6 +1,7 @@
 hgallery\GalleryFractionController.class
 hgallery\GalleryController$1.class
 hgallery\GalleryController.class
+module-info.class
 hgallery\App.class
 hgallery\AlbumReader\AlbumFileReader.class
 hgallery\File\CreateThumbnail.class
@@ -9,6 +10,7 @@ hgallery\File\FileOperate.class
 hgallery\PageViewController$1.class
 hgallery\PageViewController.class
 hgallery\ControllerUtility.class
+hgallery\GalleryController$2.class
 hgallery\Debug$ConsoleColor.class
 hgallery\MainController.class
 hgallery\File\FileOperate$1.class
