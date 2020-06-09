@@ -1,27 +1,16 @@
 package hgallery;
 
 import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.ResourceBundle;
 
-import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
+import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.File.FileOperate;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.ColumnConstraints;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.TilePane;
 
 public class GalleryController 
@@ -30,19 +19,24 @@ public class GalleryController
     @FXML private TilePane container;
 
     private ArrayList<Node> albums = new ArrayList<Node>();
+    private File[] albumDirPaths;
 
+
+    public void Set(File[] albumDirPaths)
+    {
+        albumDirPaths = this.albumDirPaths;
+    }
 
     @FXML
     private void initialize()
-    {
-        Print();
-
+    {        
         Platform.runLater(new Runnable() 
         {
             @Override 
             public void run() 
             {
                 Debug.Log("具現化GALLERY");
+                Print();
                 Resize();    
             }
         });
@@ -57,7 +51,7 @@ public class GalleryController
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
 
         // get directories
-        File[] dirs = FileOperate.GetGallerys();
+        File[] dirs = albumDirPaths;
 
         // print it
         for(int i = 0; i < dirs.length; i++)

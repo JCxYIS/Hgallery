@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.File.FileOperate;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -79,7 +80,9 @@ public class MainController implements Initializable
         if(sauce == butt_gallery)
         {
             SetTitle("我的相簿");
-            SetFXML("_GalleryView.fxml");
+            var l = SetFXML("_GalleryView.fxml");
+            var ct = (GalleryController)l.getController();
+            ct.Set(FileOperate.GetGallerys());
         }
         else if(sauce == butt_search)
         {
@@ -100,11 +103,14 @@ public class MainController implements Initializable
         {
             SetTitle("設定");
             SetFXML("_SettingView.fxml");
+           
         }
         else if(sauce == butt_safebox)
         {
-            // TODO 保險箱
             SetTitle("保險箱");
+            var l = SetFXML("_GalleryView.fxml");
+            var ct = (GalleryController)l.getController();
+            ct.Set(FileOperate.GetHentais());
         }
         else if(sauce == butt_hentai)
         {
@@ -116,30 +122,27 @@ public class MainController implements Initializable
     /**
      * 把某個FXML設為container內的東東
      */
-    private void SetFXML(String s)
-    {
-        Node gal = (Node)LoadFXML(s);
-        container.getChildren().add(gal);
-
-        // make the new item fit to the screen
-        ControllerUtility.FitAnchorPlane(gal);
-    }
-
-    /**
-     * 
-     */
-    private Object LoadFXML(String s)
+    private FXMLLoader SetFXML(String s)
     {
         try
         {
-            return FXMLLoader.load(getClass().getResource(s));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource(s));
+            Node gal = loader.load();
+            container.getChildren().add(gal);
+            ControllerUtility.FitAnchorPlane(gal);
+            return loader;
         }
-        catch (Exception e)
+        catch (IOException e)
         {
-            Debug.Log(e, ConsoleColor.RED);
+            Debug.Log(e.getStackTrace(), ConsoleColor.RED);
             return null;
         }
+        
+        // make the new item fit to the screen
+        
     }
+
+  
 
     public static AnchorPane GetContainer()
     {

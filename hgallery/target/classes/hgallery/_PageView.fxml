@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.PageViewController">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#Resize" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.PageViewController">
    <children>
       <Label fx:id="lab_page" mouseTransparent="true" text="0 / 0" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="10.0">
          <font>
@@ -51,7 +51,6 @@
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="butt_l" layoutX="230.0" mnemonicParsing="false" onAction="#PrevPage" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" opacity="0.0" prefWidth="300.0" text="L" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onAction="#NextPage" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" opacity="0.0" prefWidth="300.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" opacity="0.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>

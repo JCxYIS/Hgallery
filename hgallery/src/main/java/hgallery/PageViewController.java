@@ -21,7 +21,7 @@ import javafx.scene.layout.AnchorPane;
 
 public class PageViewController {
     @FXML private AnchorPane ap;
-    @FXML private Button butt_r, butt_l;
+    @FXML private Button butt_overlay;
     @FXML private ImageView img;
     @FXML private ImageView icon_l, icon_r;
     @FXML private Label lab_page, lab_name, lab_status;
@@ -89,9 +89,6 @@ public class PageViewController {
     {
         var w = ap.getWidth();
         var h = ap.getHeight();
-
-        butt_l.setPrefWidth(w / 2);
-        butt_r.setPrefWidth(w / 2);
         
         icon_l.setLayoutY(h/2 - 30);
         icon_r.setLayoutY(h/2 - 30);
@@ -104,20 +101,18 @@ public class PageViewController {
         img.setTranslateY(deltaY);
     }
 
-    @FXML
+    
     private void NextPage() 
     {
-        if(page < files.length-1 )
+        if(page < files.length-1)
         {
             page++;
             SwitchPage();
         }
     }
-
-    @FXML
     private void PrevPage() 
     {
-        if(page > 0 && !isDragging())
+        if(page > 0)
         {
             page--;
             SwitchPage();
@@ -195,11 +190,27 @@ public class PageViewController {
     @FXML
     private void onDragEnd(MouseEvent event)
     {
-        double dx = event.getSceneX() - dragStartX;
-        double dy = event.getSceneY() - dragStartY;
+        double x = event.getSceneX();
+        double y = event.getSceneY();
+        double dx = x - dragStartX;
+        double dy = y - dragStartY;
         dragStartX = -1;
         dragStartY = -1;
-        Debug.Log( "DragEnd delta=("+dx+", "+dy+")" );
+
+        if(dx*dx + dy*dy <= 1)
+        {
+            double leftPa = x / ap.getWidth();
+            if(leftPa <= 0.5)
+                PrevPage();
+            else
+                NextPage();
+            Debug.Log("Click!"+leftPa);
+        }
+        else
+        {
+            Debug.Log( "DragEnd delta=("+dx+", "+dy+")" );
+        }
+        
         
     }
 
