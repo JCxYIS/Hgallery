@@ -216,12 +216,12 @@ public class PageViewController {
 
         if(k == KeyCode.UP)
         {
-            deltaY -= 20;
+            deltaY += 30;
             Debug.Log("UP", ConsoleColor.BLUE);
         }
         if(k == KeyCode.DOWN)
         {
-            deltaY += 20;
+            deltaY -= 30;
             Debug.Log("DOWN", ConsoleColor.BLUE);
         }
         if(k == KeyCode.LEFT)
