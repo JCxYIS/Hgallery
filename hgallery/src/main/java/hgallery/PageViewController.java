@@ -11,7 +11,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
+import javafx.scene.input.MouseDragEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 
 public class PageViewController {
@@ -41,6 +46,10 @@ public class PageViewController {
      * 圖片 Y 偏移
      */
     private double deltaY = 1;
+    /**
+     * 如果有拖移事件，表示拖移量；否則為-1
+     */
+    private double dragStartX = -1, dragStartY = -1;
 
 
 
@@ -98,7 +107,7 @@ public class PageViewController {
     @FXML
     private void NextPage() 
     {
-        if(page < files.length-1)
+        if(page < files.length-1 )
         {
             page++;
             SwitchPage();
@@ -108,7 +117,7 @@ public class PageViewController {
     @FXML
     private void PrevPage() 
     {
-        if(page > 0)
+        if(page > 0 && !isDragging())
         {
             page--;
             SwitchPage();
@@ -117,7 +126,14 @@ public class PageViewController {
 
     private void SwitchPage() 
     {
-        //Debug.Log();
+        // scale & delta
+        deltaY = 0;
+        Resize();
+
+        // texts
+        lab_status.setText("");
+        lab_page.setText( (page+1)+" / "+(files.length) );
+        lab_name.setText( albumName );
 
         // set url
         try
@@ -125,17 +141,14 @@ public class PageViewController {
             String picPath = files[page].toURI().toURL().toString();
             Image i = new Image(picPath, 0, 1800, true, true, true);
             img.setImage(i);
-            //Debug.Log("Page："+page+" | "+picPath);
+            Debug.Log("Page："+page+" | "+picPath);
         }
         catch (Exception e)
         {
             Debug.Log("無法顯示圖片："+e, ConsoleColor.RED);
             lab_status.setText("無法顯示");
         }
-
-        lab_status.setText("");
-        lab_page.setText( (page+1)+" / "+(files.length) );
-        lab_name.setText( albumName );
+        
     }
 
     @FXML 
@@ -145,7 +158,7 @@ public class PageViewController {
 
         if(event.isControlDown())
         {
-            scaleMultipler += 0.006 * scrollAmount;
+            scaleMultipler += 0.004 * scrollAmount;
             Debug.Log("CTRL + onScroll | ScaleMultipler="+scaleMultipler, ConsoleColor.BLUE);
         }
         else
@@ -153,7 +166,41 @@ public class PageViewController {
             deltaY += 1 * scrollAmount;
             Debug.Log("onScroll | deltaY="+deltaY, ConsoleColor.BLUE);
         }
+
+        // reset
+        if(scaleMultipler <= 0)
+        {
+            scaleMultipler = 1;
+            deltaY = 0;
+        }
+
         Resize();
+    }
+
+    
+    private boolean isDragging()
+    {
+        return dragStartX!=-1 || dragStartY!=-1;
+    }
+
+    @FXML
+    private void onDragStart(MouseEvent event)
+    {
+        dragStartX = event.getSceneX();
+        dragStartY = event.getSceneY();
+        event.setDragDetect(true);
+        Debug.Log( "Drag Start" );
+    }
+
+    @FXML
+    private void onDragEnd(MouseEvent event)
+    {
+        double dx = event.getSceneX() - dragStartX;
+        double dy = event.getSceneY() - dragStartY;
+        dragStartX = -1;
+        dragStartY = -1;
+        Debug.Log( "DragEnd delta=("+dx+", "+dy+")" );
+        
     }
 
 }
