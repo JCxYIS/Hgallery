@@ -2,23 +2,13 @@ package hgallery.AlbumReader;
 
 import java.io.File;
 
-import hgallery.Debug;
-import hgallery.Debug.ConsoleColor;
-import hgallery.File.CreateThumbnail;
-import hgallery.Settings.SettingManager;
-import hgallery.Settings.Settings;
 
-public class AlbumReader 
+public class AlbumFileReader 
 {
 
-    public AlbumReader()
+    public AlbumFileReader()
     {
-
-    }
-
-    public void Read()
-    {
-        
+       
     }
 
     /**
