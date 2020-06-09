@@ -10,6 +10,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
@@ -44,6 +45,9 @@ public class GalleryFractionController
         String localUrl = thumbPicPath.toURI().toURL().toString();
         //Debug.Log(localUrl);
         img.setImage(new Image(localUrl, 0, 400, true, true, true));
+
+
+        img.setEffect(new GaussianBlur(50));
     }
 
     @FXML 
