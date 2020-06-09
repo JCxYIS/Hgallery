@@ -15,11 +15,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
 import javafx.scene.input.Dragboard;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
 
 public class PageViewController {
     @FXML private AnchorPane ap;
@@ -28,6 +31,10 @@ public class PageViewController {
     @FXML private ImageView icon_l, icon_r;
     @FXML private Label lab_page, lab_name, lab_status;
 
+    /**
+     * My stage
+     */
+    private Stage stage;
     /**
      * 圖片檔案s
      */
@@ -62,7 +69,7 @@ public class PageViewController {
     /**
      * 設定這個view的參數s
      */
-    public void Set(File galleryDir, boolean shouldblur) 
+    public void Set(Stage stage, File galleryDir, boolean shouldblur) 
     {
         files = galleryDir.listFiles(new FileFilter()
         {
@@ -74,6 +81,7 @@ public class PageViewController {
         });
         albumName = galleryDir.getName();
         blur = shouldblur;
+        this.stage = stage;
     }
 
     @FXML
@@ -186,6 +194,51 @@ public class PageViewController {
         }
 
         Resize();
+    }
+
+
+    @FXML
+    private void onKeyPressed(KeyEvent event)
+    {
+        var k = event.getCode();
+
+        if(k == KeyCode.PLUS || k == KeyCode.ADD)
+        {
+            scaleMultipler += 0.25;
+            Debug.Log("PLUS | ScaleMultipler="+scaleMultipler, ConsoleColor.BLUE);
+        }
+        if(k == KeyCode.MINUS || k == KeyCode.SUBTRACT)
+        {
+            scaleMultipler -= 0.25;
+            Debug.Log("MINUS | ScaleMultipler="+scaleMultipler, ConsoleColor.BLUE);
+        }
+
+        if(k == KeyCode.UP)
+        {
+            deltaY -= 20;
+            Debug.Log("UP", ConsoleColor.BLUE);
+        }
+        if(k == KeyCode.DOWN)
+        {
+            deltaY += 20;
+            Debug.Log("DOWN", ConsoleColor.BLUE);
+        }
+        if(k == KeyCode.LEFT)
+        {
+            PrevPage();
+            Debug.Log("LEFT", ConsoleColor.BLUE);
+        }
+        if(k == KeyCode.RIGHT)
+        {
+            NextPage();
+            Debug.Log("RIGHT", ConsoleColor.BLUE);
+        }
+
+        if(k == KeyCode.ESCAPE)
+        {
+            stage.close();
+            Debug.Log("ESC | QUIT", ConsoleColor.BLUE);
+        }
     }
 
 

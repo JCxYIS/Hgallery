@@ -51,6 +51,6 @@
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onMouseDragged="#onDragContinue" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" opacity="0.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onKeyPressed="#onKeyPressed" onMouseDragged="#onDragContinue" onMouseMoved="#Resize" onMousePressed="#onDragStart" onMouseReleased="#onDragEnd" onScroll="#onScroll" opacity="0.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
