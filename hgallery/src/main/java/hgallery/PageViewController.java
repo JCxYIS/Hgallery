@@ -5,6 +5,7 @@ import java.io.FileFilter;
 
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
+import hgallery.Settings.SettingManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -145,7 +146,7 @@ public class PageViewController {
 
             // blur?
             if(blur)
-                img.setEffect(new GaussianBlur(60));
+                img.setEffect(new GaussianBlur(SettingManager.settings.blur));
             else
                 img.setEffect(new GaussianBlur(0));
 

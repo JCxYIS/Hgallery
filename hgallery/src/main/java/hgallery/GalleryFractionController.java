@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -50,7 +51,7 @@ public class GalleryFractionController
 
         this.shouldBlur = shouldblur;
         if(shouldblur)
-            img.setEffect(new GaussianBlur(50));
+            img.setEffect(new GaussianBlur(SettingManager.settings.blur));
     }
 
     @FXML 

@@ -23,6 +23,7 @@ public class SettingController
 
     @FXML private TextField tf_galleryPath;
     @FXML private TextField tf_hentaiPath;
+    @FXML private TextField tf_blur;
 
     @FXML private PasswordField pf_oldpsw;
     @FXML private PasswordField pf_newpsw;
@@ -37,6 +38,7 @@ public class SettingController
         lab_status.setText("");
         tf_galleryPath.setText(SettingManager.settings.galleryPath);
         tf_hentaiPath.setText(SettingManager.settings.hentaiPath);
+        tf_blur.setText(""+SettingManager.settings.blur);
 
         //
         if (SettingManager.settings.pswEncrypted.equals("")) {
@@ -63,32 +65,59 @@ public class SettingController
     {
         String output = "";        
 
+        // save normal stuffs
         SettingManager.settings.galleryPath = tf_galleryPath.getText();
         SettingManager.settings.hentaiPath = tf_hentaiPath.getText();
 
-        // wanna set new psw
-        if(pf_newpsw.getText().length() > 0 || SettingManager.settings.pswEncrypted.equals("") )
+        // save blur
+        try 
         {
-            // check psw correct or not
-            if( SettingManager.settings.pswEncrypted.equals("") || 
-                Encryption.validatePassword(pf_oldpsw.getText(), SettingManager.settings.pswEncrypted) )
-            {
-                var np = Encryption.generateStorngPasswordHash( pf_newpsw.getText() );
-                SettingManager.settings.pswEncrypted = np;
-                pf_oldpsw.setStyle("-fx-background-color : #80ffb7");
+            SettingManager.settings.blur = Integer.parseInt(tf_blur.getText());
 
-                output += "已儲存新密碼！\n";
-                Debug.Log("密碼對了！儲存新密碼(加密後)："+np, ConsoleColor.GREEN);
-            }
-            else
+            if(SettingManager.settings.blur > 100 || SettingManager.settings.blur < 0)
             {
-                pf_oldpsw.setStyle("-fx-background-color : #ff9e9e");
-                Debug.Log("密碼不對！不會儲存新密碼", ConsoleColor.GREEN);
-                
-                lab_status.setText("密碼不對喔！\n設定不會被儲存。");
+                lab_status.setText("解析「模糊度」發生錯誤：「模糊度」應該要大於0，小於100");
                 return;
             }
-        }        
+        }
+        catch (Exception e)
+        {
+            lab_status.setText("解析「模糊度」發生錯誤：輸入可能不是數字");
+            Debug.Log("解析「模糊度」發生錯誤：輸入可能不是數字"+e, ConsoleColor.RED);
+            return;
+        }
+
+        // wanna set new psw
+        try
+        {
+            if(pf_newpsw.getText().length() > 0 || SettingManager.settings.pswEncrypted.equals("") )
+            {
+                // check psw correct or not
+                if( SettingManager.settings.pswEncrypted.equals("") || 
+                    Encryption.validatePassword(pf_oldpsw.getText(), SettingManager.settings.pswEncrypted) )
+                {
+                    var np = Encryption.generateStorngPasswordHash( pf_newpsw.getText() );
+                    SettingManager.settings.pswEncrypted = np;
+                    pf_oldpsw.setStyle("-fx-background-color : #80ffb7");
+
+                    output += "已儲存新密碼！\n";
+                    Debug.Log("密碼對了！儲存新密碼(加密後)："+np, ConsoleColor.GREEN);
+                }
+                else
+                {
+                    pf_oldpsw.setStyle("-fx-background-color : #ff9e9e");
+                    Debug.Log("密碼不對！不會儲存新密碼", ConsoleColor.GREEN);
+                    lab_status.setText("密碼不對喔！\n設定不會被儲存。");
+                    return;
+                }
+            }  
+        }   
+        catch (Exception e)
+        {
+            lab_status.setText("解析密碼發生錯誤");
+            Debug.Log("解析密碼發生錯誤"+e, ConsoleColor.RED);
+            return;
+        }   
 
         output += "已儲存設定！";
         lab_status.setText(output);
