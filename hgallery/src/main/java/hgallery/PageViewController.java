@@ -32,6 +32,10 @@ public class PageViewController {
      */
     private File[] files;
     /**
+     * 要模糊？
+     */
+    private boolean blur = false;
+    /**
      * 這可能不是實際頁數，是圖片檔案的次序。
      */
     private int page = 0;
@@ -57,7 +61,7 @@ public class PageViewController {
     /**
      * 設定這個view的參數s
      */
-    public void Set(File galleryDir) 
+    public void Set(File galleryDir, boolean shouldblur) 
     {
         files = galleryDir.listFiles(new FileFilter()
         {
@@ -68,6 +72,7 @@ public class PageViewController {
             }
         });
         albumName = galleryDir.getName();
+        blur = shouldblur;
     }
 
     @FXML
@@ -138,7 +143,11 @@ public class PageViewController {
             Image i = new Image(picPath, 0, 1800, true, true, true);
             img.setImage(i);
 
-            img.setEffect(new GaussianBlur(60));
+            // blur?
+            if(blur)
+                img.setEffect(new GaussianBlur(60));
+            else
+                img.setEffect(new GaussianBlur(0));
 
             Debug.Log("Page："+page+" | "+picPath);
         }
@@ -176,11 +185,6 @@ public class PageViewController {
         Resize();
     }
 
-    
-    private boolean isDragging()
-    {
-        return dragStartX!=-1 || dragStartY!=-1;
-    }
 
     @FXML
     private void onDragStart(MouseEvent event)
