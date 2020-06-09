@@ -71,8 +71,13 @@ public class PageViewController {
     public void Resize() 
     {
         var w = ap.getWidth();
+        var h = ap.getHeight();
+
         butt_l.setPrefWidth(w / 2);
         butt_r.setPrefWidth(w / 2);
+        
+        img.setFitWidth (w - 20);
+        img.setFitHeight(h - 20);
     }
 
     @FXML
@@ -93,13 +98,14 @@ public class PageViewController {
 
     private void SwitchPage() 
     {
-        Debug.Log("Page："+page);
+        //Debug.Log();
 
         // set url
         try
         {
             String picPath = files[page].toURI().toURL().toString();
             img.setImage(new Image(picPath, true));
+            Debug.Log("Page："+page+" | "+picPath);
         }
         catch (Exception e)
         {
