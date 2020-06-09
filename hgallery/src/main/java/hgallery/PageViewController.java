@@ -1,12 +1,18 @@
 package hgallery;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileFilter;
+import java.io.FileInputStream;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.lang.ModuleLayer.Controller;
 import java.net.MalformedURLException;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import javax.imageio.ImageIO;
 
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
@@ -104,8 +110,9 @@ public class PageViewController {
         try
         {
             String picPath = files[page].toURI().toURL().toString();
-            img.setImage(new Image(picPath, true));
-            Debug.Log("Page："+page+" | "+picPath);
+            Image i = new Image(picPath, 0, 1800, true, true, true);
+            img.setImage(i);
+            //Debug.Log("Page："+page+" | "+picPath);
         }
         catch (Exception e)
         {
