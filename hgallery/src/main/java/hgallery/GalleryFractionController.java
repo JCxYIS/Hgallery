@@ -67,7 +67,7 @@ public class GalleryFractionController
             FXMLLoader loader = new FXMLLoader(getClass().getResource("_PageView.fxml"));
             root = loader.load();
             PageViewController pvc = loader.getController();
-            pvc.Set(galleryDirPath, shouldBlur);
+
             Scene scene = new Scene(root);
 
             // set stage
@@ -76,6 +76,8 @@ public class GalleryFractionController
             stage.setScene(scene);
             stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
             stage.show();
+
+            pvc.Set(stage, galleryDirPath, shouldBlur);
             // Hide this current window (if this is what you want)
             //((Node)(event.getSource())).getScene().getWindow().hide();
         }
