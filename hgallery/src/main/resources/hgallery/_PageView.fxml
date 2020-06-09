@@ -10,14 +10,20 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.PageViewController">
+<AnchorPane fx:id="ap" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onMouseMoved="#Resize" onScroll="#onScroll" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.PageViewController">
    <children>
-      <Label text="0 / 0" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0">
+      <Label fx:id="lab_page" mouseTransparent="true" text="0 / 0" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="10.0">
          <font>
             <Font size="16.0" />
          </font>
       </Label>
-      <ImageView fx:id="icon_l" fitHeight="60.0" fitWidth="60.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" rotate="180.0" AnchorPane.leftAnchor="15.0">
+      <Label fx:id="lab_name" layoutX="1246.0" layoutY="763.0" mouseTransparent="true" text="J.C.不是蘿莉控" textAlignment="RIGHT" textFill="WHITE" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0" />
+      <Label fx:id="lab_status" layoutX="1256.0" layoutY="773.0" mouseTransparent="true" prefHeight="30.0" prefWidth="258.0" text="Warning: J.C.不是蘿莉控666666666666666" textAlignment="RIGHT" textFill="#ffd400" textOverrun="CLIP" wrapText="true" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+         <font>
+            <Font size="23.0" />
+         </font>
+      </Label>
+      <ImageView fx:id="icon_l" fitHeight="60.0" fitWidth="60.0" layoutY="370.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" rotate="180.0" AnchorPane.leftAnchor="15.0">
          <image>
             <Image url="@images/arrow.png" />
          </image>
@@ -25,7 +31,7 @@
             <ColorAdjust brightness="1.0" />
          </effect>
       </ImageView>
-      <ImageView fx:id="icon_r" fitHeight="60.0" fitWidth="60.0" layoutY="370.0" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0">
+      <ImageView fx:id="icon_r" fitHeight="60.0" fitWidth="60.0" layoutY="370.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" AnchorPane.rightAnchor="15.0">
          <effect>
             <ColorAdjust brightness="1.0" />
          </effect>
@@ -33,9 +39,9 @@
             <Image url="@images/arrow.png" />
          </image>
       </ImageView>
-      <HBox alignment="CENTER" cacheShape="false" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <HBox alignment="CENTER" cacheShape="false" mouseTransparent="true" nodeOrientation="LEFT_TO_RIGHT" prefHeight="100.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <ImageView fx:id="img" fitHeight="700.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="img" fitHeight="700.0" onMouseMoved="#Resize" onScroll="#onScroll" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@images/testAssets/testHgPage.jpg" />
                </image>
@@ -45,7 +51,7 @@
             </ImageView>
          </children>
       </HBox>
-      <Button fx:id="butt_l" layoutX="230.0" mnemonicParsing="false" onAction="#PrevPage" onMouseMoved="#Resize" opacity="0.0" prefWidth="300.0" text="L" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
-      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onAction="#NextPage" onMouseMoved="#Resize" opacity="0.0" prefWidth="300.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="butt_l" layoutX="230.0" mnemonicParsing="false" onAction="#PrevPage" onMouseMoved="#Resize" onScroll="#onScroll" opacity="0.0" prefWidth="300.0" text="L" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.topAnchor="0.0" />
+      <Button fx:id="butt_r" layoutX="401.0" layoutY="165.0" mnemonicParsing="false" onAction="#NextPage" onMouseMoved="#Resize" onScroll="#onScroll" opacity="0.0" prefWidth="300.0" text="R" AnchorPane.bottomAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
    </children>
 </AnchorPane>
