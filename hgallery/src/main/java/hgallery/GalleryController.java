@@ -106,7 +106,19 @@ public class GalleryController
         var w = sp.getWidth();
         var h = sp.getHeight();
         container.setPrefSize(w, h);
-        Debug.Log("重新計算GALLERY視窗：寬度"+w);
+        Debug.Log("重新計算GALLERY視窗：寬度="+w+" | 高度="+h);
+
+        if(w == 0 && h == 0)
+        {
+            Platform.runLater(new Runnable() 
+            {
+                @Override 
+                public void run() 
+                {
+                    Resize();    
+                }
+            });
+        }
 
         /* TILEPANE 好好用
         // calc each row can fit in how many hentais
