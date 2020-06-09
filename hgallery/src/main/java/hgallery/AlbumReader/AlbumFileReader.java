@@ -2,6 +2,8 @@ package hgallery.AlbumReader;
 
 import java.io.File;
 
+import hgallery.Debug;
+
 
 public class AlbumFileReader 
 {
@@ -22,6 +24,7 @@ public class AlbumFileReader
         }
 
         extension = extension.toLowerCase();
+        //Debug.Log(extension);
         return extension.equals("png") || extension.equals("jpg") || extension.equals("jpeg") ||
                extension.equals("gif") || extension.equals("bmp");
     }

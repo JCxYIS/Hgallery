@@ -71,17 +71,17 @@ public class GalleryController
                 // make fraction (node)
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
                 Node newItem = fxmlLoader.load();
-                
+ 
                 // Set properties of this album
                 GalleryFractionController c = fxmlLoader.getController();
                 c.Set( dirs[i], AlbumFileReader.GetThumbnailPath(dirs[i]) );
-
+                
                 // add.
                 albums.add(newItem);
             }
             catch (Exception e)
             {
-                Debug.Log(e, ConsoleColor.RED);
+                Debug.Log("無法製作一個GALLERY清單("+dirs[i].getName()+")"+e.getStackTrace(), ConsoleColor.RED);
             }
         }
 
