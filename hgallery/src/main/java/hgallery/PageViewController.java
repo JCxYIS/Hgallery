@@ -1,9 +1,14 @@
 package hgallery;
 
 import java.io.File;
+import java.io.FileFilter;
 import java.lang.ModuleLayer.Controller;
 import java.net.MalformedURLException;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
+import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -36,7 +41,14 @@ public class PageViewController {
      */
     public void Set(File galleryDir) 
     {
-        files = galleryDir.listFiles();
+        files = galleryDir.listFiles(new FileFilter()
+        {
+            @Override
+            public boolean accept(File pathname) 
+            {                
+                return AlbumFileReader.IsValidPicType(pathname);
+            }
+        });
         page = 0;
     }
 
@@ -56,21 +68,26 @@ public class PageViewController {
     }
 
     @FXML
-    public void Resize() {
+    public void Resize() 
+    {
         var w = ap.getWidth();
         butt_l.setPrefWidth(w / 2);
         butt_r.setPrefWidth(w / 2);
     }
 
     @FXML
-    private void NextPage() {
-        page++;
+    private void NextPage() 
+    {
+        if(page < files.length-1)
+            page++;
         SwitchPage();
     }
 
     @FXML
-    private void PrevPage() {
-        page--;
+    private void PrevPage() 
+    {
+        if(page > 0)
+            page--;
         SwitchPage();
     }
 
