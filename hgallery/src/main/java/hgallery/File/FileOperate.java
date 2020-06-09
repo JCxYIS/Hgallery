@@ -55,4 +55,9 @@ public class FileOperate
         //System.out.println("所求的資料夾："+Arrays.toString(directories));
         return directories; 
     }
+
+    
+
+
+
 }

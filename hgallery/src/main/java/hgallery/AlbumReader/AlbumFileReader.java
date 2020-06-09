@@ -11,12 +11,32 @@ public class AlbumFileReader
        
     }
 
+    public static boolean IsValidPicType(File file)
+    {
+        String extension = "";
+        String path = file.getAbsolutePath();
+        int i = path.lastIndexOf('.');
+        if (i > 0) 
+        {
+            extension = path.substring(i + 1);
+        }
+
+        extension = extension.toLowerCase();
+        return extension.equals("png") || extension.equals("jpg") || extension.equals("jpeg") ||
+               extension.equals("gif") || extension.equals("bmp");
+    }
+
     /**
      * 取得縮圖連結。沒有的話會建一個：失敗會return null
      */
     public static File GetThumbnailPath(File albumDirPath) 
     {
-        return albumDirPath.listFiles()[0];
+        for ( File f : albumDirPath.listFiles() ) 
+        {
+            if(IsValidPicType(f))
+                return f;    
+        }
+        return null;
 
         // 現在可以不用，因為JAVAFX的讀圖
         /*

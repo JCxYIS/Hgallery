@@ -37,10 +37,10 @@ public class GalleryFractionController
         // set 
         galleryDirPath = galleryPath;
 
-        // set label
+        // set button label
         label.setText(galleryDirPath.getName());
 
-        // set image
+        // set button thumbnail
         String localUrl = thumbPicPath.toURI().toURL().toString();
         //Debug.Log(localUrl);
         img.setImage(new Image(localUrl, true));
