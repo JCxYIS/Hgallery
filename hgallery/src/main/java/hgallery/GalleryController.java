@@ -22,9 +22,9 @@ public class GalleryController
     private File[] albumDirPaths;
 
 
-    public void Set(File[] albumDirPaths)
+    public void Set(File[] albumPaths)
     {
-        albumDirPaths = this.albumDirPaths;
+        albumDirPaths = albumPaths;
     }
 
     @FXML

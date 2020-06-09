@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.DragEvent;
@@ -136,6 +137,9 @@ public class PageViewController {
             String picPath = files[page].toURI().toURL().toString();
             Image i = new Image(picPath, 0, 1800, true, true, true);
             img.setImage(i);
+
+            img.setEffect(new GaussianBlur(60));
+
             Debug.Log("Page："+page+" | "+picPath);
         }
         catch (Exception e)
