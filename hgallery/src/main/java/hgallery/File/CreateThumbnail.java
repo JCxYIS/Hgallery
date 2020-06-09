@@ -28,5 +28,5 @@ public class CreateThumbnail
         File output = new File(outputPath);
         output.mkdirs();
         ImageIO.write(thumb, "JPG", output);
-      }
+    }
 }

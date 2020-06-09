@@ -37,7 +37,7 @@
                 <artifactId>javafx-maven-plugin</artifactId>
                 <version>0.0.4</version>
                 <configuration>
-                    <mainClass>com.JCxYIS.hgallery.App</mainClass>
+                    <mainClass>hgallery.App</mainClass>
                 </configuration>
             </plugin>
         </plugins>
