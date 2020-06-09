@@ -26,7 +26,7 @@ public class GalleryController
     public void Set(File[] albumPaths, boolean shouldblur)
     {
         albumDirPaths = albumPaths;
-        this.shouldBlur = shouldblur;
+        this.shouldBlur = shouldblur;        
     }
 
     @FXML
@@ -106,7 +106,7 @@ public class GalleryController
         var w = sp.getWidth();
         var h = sp.getHeight();
         container.setPrefSize(w, h);
-        //Debug.Log("重新計算GALLERY視窗：寬度"+w);
+        Debug.Log("重新計算GALLERY視窗：寬度"+w);
 
         /* TILEPANE 好好用
         // calc each row can fit in how many hentais
