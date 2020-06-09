@@ -1,18 +1,7 @@
 package hgallery;
 
-import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileFilter;
-import java.io.FileInputStream;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.lang.ModuleLayer.Controller;
-import java.net.MalformedURLException;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-
-import javax.imageio.ImageIO;
 
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
@@ -27,11 +16,11 @@ public class PageViewController {
     @FXML
     private AnchorPane ap;
     @FXML
-    private Button butt_r;
-    @FXML
-    private Button butt_l;
+    private Button butt_r, butt_l;
     @FXML
     private ImageView img;
+    @FXML
+    private ImageView icon_l, icon_r;
 
     /**
      * 圖片檔案s
@@ -42,6 +31,9 @@ public class PageViewController {
      */
     private int page;
 
+
+
+    
     /**
      * 設定這個view的參數s
      */
@@ -82,6 +74,9 @@ public class PageViewController {
         butt_l.setPrefWidth(w / 2);
         butt_r.setPrefWidth(w / 2);
         
+        icon_l.setLayoutY(h/2 - 30);
+        icon_r.setLayoutY(h/2 - 30);
+
         img.setFitWidth (w - 20);
         img.setFitHeight(h - 20);
     }
