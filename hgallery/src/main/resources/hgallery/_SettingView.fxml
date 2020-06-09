@@ -58,6 +58,32 @@
                   <Pane prefHeight="50.0" prefWidth="658.0" />
                   <Pane prefHeight="50.0" prefWidth="658.0">
                      <children>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="302.0" text="DEMO設定" textFill="WHITE" underline="true">
+                           <tooltip>
+                              <Tooltip text="不然我會被吉www" />
+                           </tooltip>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                        </Label>
+                     </children>
+                     <effect>
+                        <Bloom threshold="0.97" />
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="50.0" prefWidth="658.0">
+                     <children>
+                        <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="104.0" text="高速行駛模糊程度" textFill="WHITE">
+                           <tooltip>
+                              <Tooltip text="你猜阿" />
+                           </tooltip>
+                        </Label>
+                        <TextField fx:id="tf_blur" layoutX="122.0" layoutY="14.0" prefHeight="23.0" prefWidth="426.0" promptText="興奮到模糊" />
+                     </children>
+                  </Pane>
+                  <Pane prefHeight="50.0" prefWidth="658.0" />
+                  <Pane prefHeight="50.0" prefWidth="658.0">
+                     <children>
                         <Label layoutX="14.0" layoutY="18.0" prefHeight="15.0" prefWidth="302.0" text="如果你想更改保險箱的密碼..." textFill="WHITE" underline="true">
                            <tooltip>
                               <Tooltip text="乳題" />

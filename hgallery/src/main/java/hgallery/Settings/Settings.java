@@ -9,6 +9,7 @@ public class Settings implements Serializable
     public String galleryPath = "";
     public String hentaiPath = "";   
     public String pswEncrypted = "";
+    public int blur = 60;
 
     /**
      * Default Values
@@ -17,7 +18,7 @@ public class Settings implements Serializable
     {
         galleryPath = SettingManager.saveDir + "\\Gallery";
         hentaiPath = SettingManager.saveDir + "\\Hentai";
-        pswEncrypted = "";
+        blur = 60;
     }
     
     @Override
@@ -25,6 +26,7 @@ public class Settings implements Serializable
     {
         return "galleryPath="+galleryPath+"\n"+
                "hentaiPath="+hentaiPath +"\n"+
-               "pswEncrypted="+pswEncrypted+"\n";
+               "pswEncrypted="+pswEncrypted+"\n"+
+               "blur="+blur;
     }
 }
