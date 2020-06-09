@@ -82,7 +82,7 @@ public class MainController implements Initializable
             SetTitle("我的相簿");
             var l = SetFXML("_GalleryView.fxml");
             var ct = (GalleryController)l.getController();
-            ct.Set(FileOperate.GetGallerys());
+            ct.Set(FileOperate.GetGallerys(), false);
         }
         else if(sauce == butt_search)
         {
@@ -110,7 +110,7 @@ public class MainController implements Initializable
             SetTitle("保險箱");
             var l = SetFXML("_GalleryView.fxml");
             var ct = (GalleryController)l.getController();
-            ct.Set(FileOperate.GetHentais());
+            ct.Set(FileOperate.GetHentais(), true);
         }
         else if(sauce == butt_hentai)
         {

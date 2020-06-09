@@ -25,6 +25,8 @@ public class GalleryFractionController
      */
     private File galleryDirPath;
 
+    private boolean shouldBlur;
+
 
 
     /**
@@ -33,7 +35,7 @@ public class GalleryFractionController
      * @param thumbPicPath
      * @throws MalformedURLException
      */
-    public void Set(File galleryPath, File thumbPicPath) throws MalformedURLException
+    public void Set(File galleryPath, File thumbPicPath, boolean shouldblur) throws MalformedURLException
     {
         // set 
         galleryDirPath = galleryPath;
@@ -46,8 +48,9 @@ public class GalleryFractionController
         //Debug.Log(localUrl);
         img.setImage(new Image(localUrl, 0, 400, true, true, true));
 
-
-        img.setEffect(new GaussianBlur(50));
+        this.shouldBlur = shouldblur;
+        if(shouldblur)
+            img.setEffect(new GaussianBlur(50));
     }
 
     @FXML 
@@ -63,13 +66,14 @@ public class GalleryFractionController
             FXMLLoader loader = new FXMLLoader(getClass().getResource("_PageView.fxml"));
             root = loader.load();
             PageViewController pvc = loader.getController();
-            pvc.Set(galleryDirPath);
+            pvc.Set(galleryDirPath, shouldBlur);
             Scene scene = new Scene(root);
 
             // set stage
             Stage stage = new Stage();
             stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
             stage.setScene(scene);
+            stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
             stage.show();
             // Hide this current window (if this is what you want)
             //((Node)(event.getSource())).getScene().getWindow().hide();

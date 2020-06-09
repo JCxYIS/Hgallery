@@ -20,11 +20,13 @@ public class GalleryController
 
     private ArrayList<Node> albums = new ArrayList<Node>();
     private File[] albumDirPaths;
+    private boolean shouldBlur;
 
 
-    public void Set(File[] albumPaths)
+    public void Set(File[] albumPaths, boolean shouldblur)
     {
         albumDirPaths = albumPaths;
+        this.shouldBlur = shouldblur;
     }
 
     @FXML
@@ -68,7 +70,7 @@ public class GalleryController
  
                 // Set properties of this album
                 GalleryFractionController c = fxmlLoader.getController();
-                c.Set( dirs[i], AlbumFileReader.GetThumbnailPath(dirs[i]) );
+                c.Set( dirs[i], AlbumFileReader.GetThumbnailPath(dirs[i]),  shouldBlur);
                 
                 // add.
                 albums.add(newItem);
