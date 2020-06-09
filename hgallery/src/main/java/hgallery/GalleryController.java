@@ -6,7 +6,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-import hgallery.AlbumReader.AlbumReader;
+import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.File.FileOperate;
 import javafx.application.Platform;
@@ -74,7 +74,7 @@ public class GalleryController
                 
                 // Set properties of this album
                 GalleryFractionController c = fxmlLoader.getController();
-                c.Set( dirs[i], AlbumReader.GetThumbnailPath(dirs[i]) );
+                c.Set( dirs[i], AlbumFileReader.GetThumbnailPath(dirs[i]) );
 
                 // add.
                 albums.add(newItem);
@@ -110,7 +110,7 @@ public class GalleryController
         var w = sp.getWidth();
         var h = sp.getHeight();
         container.setPrefSize(w, h);
-        Debug.Log("重新計算GALLERY視窗：寬度"+w);
+        //Debug.Log("重新計算GALLERY視窗：寬度"+w);
 
         /* TILEPANE 好好用
         // calc each row can fit in how many hentais

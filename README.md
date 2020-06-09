@@ -6,4 +6,7 @@
 ### 參考資料
 [See here](hgallery/References.md)
 
+### 後記
+> Hgallery是一款真正的本子瀏覽器
+
 
