@@ -49,13 +49,13 @@ public class PageViewController {
      */
     private double scaleMultipler = 1;
     /**
-     * 圖片 Y 偏移
+     * 圖片偏移
      */
-    private double deltaY = 1;
+    private double deltaX = 0, deltaY = 0;
     /**
      * 如果有拖移事件，表示拖移量；否則為-1
      */
-    private double dragStartX = -1, dragStartY = -1;
+    private double dragStartX = -1, dragStartY = -1, dragPrevX = -1, dragPrevY = -1;
 
 
 
@@ -105,6 +105,7 @@ public class PageViewController {
 
         img.setScaleX(scaleMultipler);
         img.setScaleY(scaleMultipler);
+        img.setTranslateX(deltaX);
         img.setTranslateY(deltaY);
     }
 
@@ -150,7 +151,7 @@ public class PageViewController {
             else
                 img.setEffect(new GaussianBlur(0));
 
-            Debug.Log("Page："+page+" | "+picPath);
+            Debug.Log("Page："+page+" | "+picPath, ConsoleColor.PURPLE);
         }
         catch (Exception e)
         {
@@ -180,6 +181,7 @@ public class PageViewController {
         if(scaleMultipler <= 0)
         {
             scaleMultipler = 1;
+            deltaX = 0;
             deltaY = 0;
         }
 
@@ -192,8 +194,29 @@ public class PageViewController {
     {
         dragStartX = event.getSceneX();
         dragStartY = event.getSceneY();
+        dragPrevX = dragStartX;
+        dragPrevY = dragStartY;
         event.setDragDetect(true);
-        Debug.Log( "Drag Start" );
+        Debug.Log("Drag Start");
+    }
+
+    @FXML
+    private void onDragContinue(MouseEvent event)
+    {
+        double x = event.getSceneX();
+        double y = event.getSceneY();
+
+        double dx = x - dragPrevX;
+        double dy = y - dragPrevY;
+
+        deltaX += dx;
+        deltaY += dy;
+
+        dragPrevX = x;
+        dragPrevY = y;
+
+        Resize(); 
+        Debug.Log("Drag Continue! dx="+dx+" dy="+dy, ConsoleColor.BLUE);
     }
 
     @FXML
@@ -205,6 +228,8 @@ public class PageViewController {
         double dy = y - dragStartY;
         dragStartX = -1;
         dragStartY = -1;
+        dragPrevX = -1;
+        dragPrevY = -1;
 
         if(dx*dx + dy*dy <= 1)
         {
@@ -213,11 +238,11 @@ public class PageViewController {
                 PrevPage();
             else
                 NextPage();
-            Debug.Log("Click!"+leftPa);
+            Debug.Log("Click! 觸碰之左至右百分比："+leftPa, ConsoleColor.BLUE);
         }
         else
         {
-            Debug.Log( "DragEnd delta=("+dx+", "+dy+")" );
+            Debug.Log( "DragEnd delta=("+dx+", "+dy+")", ConsoleColor.BLUE);
         }
         
         
