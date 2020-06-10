@@ -28,14 +28,11 @@ public class SettingController
     @FXML private PasswordField pf_oldpsw;
     @FXML private PasswordField pf_newpsw;
 
-    @FXML private Label lab_status;
-
 
     @FXML
     private void initialize() 
     {
         // init params
-        lab_status.setText("");
         tf_galleryPath.setText(SettingManager.settings.galleryPath);
         tf_hentaiPath.setText(SettingManager.settings.hentaiPath);
         tf_blur.setText(""+SettingManager.settings.blur);
@@ -76,13 +73,13 @@ public class SettingController
 
             if(SettingManager.settings.blur > 100 || SettingManager.settings.blur < 0)
             {
-                lab_status.setText("解析「模糊度」發生錯誤：「模糊度」應該要大於0，小於100");
+                MessageBoxController.CreateMessageBox("參數錯誤", "解析「模糊度」發生錯誤：「模糊度」應該要大於0，小於100");
                 return;
             }
         }
         catch (Exception e)
         {
-            lab_status.setText("解析「模糊度」發生錯誤：輸入可能不是數字");
+            MessageBoxController.CreateMessageBox("參數錯誤", "解析「模糊度」發生錯誤：輸入可能不是數字");
             Debug.Log("解析「模糊度」發生錯誤：輸入可能不是數字"+e, ConsoleColor.RED);
             return;
         }
@@ -107,20 +104,20 @@ public class SettingController
                 {
                     pf_oldpsw.setStyle("-fx-background-color : #ff9e9e");
                     Debug.Log("密碼不對！不會儲存新密碼", ConsoleColor.GREEN);
-                    lab_status.setText("密碼不對喔！\n設定不會被儲存。");
+                    MessageBoxController.CreateMessageBox("密碼錯誤", "密碼不對喔！\n設定不會被儲存。");
                     return;
                 }
             }  
         }   
         catch (Exception e)
         {
-            lab_status.setText("解析密碼發生錯誤");
+            MessageBoxController.CreateMessageBox("錯誤", "解析密碼時發生錯誤");
             Debug.Log("解析密碼發生錯誤"+e, ConsoleColor.RED);
             return;
         }   
 
         output += "已儲存設定！";
-        lab_status.setText(output);
+        MessageBoxController.CreateMessageBox("太棒了！", output);
         Debug.Log("已儲存設定！", ConsoleColor.GREEN);
     }
 }

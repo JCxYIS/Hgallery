@@ -127,11 +127,6 @@
                               <Glow level="0.62" />
                            </effect>
                         </Button>
-                        <Label fx:id="lab_status" layoutX="390.0" layoutY="14.0" prefHeight="43.0" prefWidth="209.0" text="SAVE STATUS" textFill="WHITE" textOverrun="CLIP" wrapText="true">
-                           <tooltip>
-                              <Tooltip text="你猜阿" />
-                           </tooltip>
-                        </Label>
                      </children>
                   </Pane>
                </children>
