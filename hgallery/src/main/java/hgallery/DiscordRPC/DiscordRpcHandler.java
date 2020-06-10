@@ -26,7 +26,7 @@ public class DiscordRpcHandler
             .setReadyEventHandler((user) -> 
             {
                 Debug.Log("Discord已連接：連接至" + user.username + "#" + user.discriminator + "", ConsoleColor.CYAN);
-                NewPresence("Idle", "", false);
+                NewPresence("Idle", "");
             })
             .setErroredEventHandler((i,s)->
             {

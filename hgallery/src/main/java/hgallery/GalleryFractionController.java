@@ -78,7 +78,7 @@ public class GalleryFractionController
             stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
             stage.setOnCloseRequest( (e)->
             {
-                DiscordRpcHandler.NewPresence("Idle","", false);
+                DiscordRpcHandler.NewPresence("Idle","");
             });
             stage.show();
 
