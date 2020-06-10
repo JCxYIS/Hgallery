@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.DiscordRPC.DiscordRpcHandler;
 import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -75,6 +76,10 @@ public class GalleryFractionController
             stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
             stage.setScene(scene);
             stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
+            stage.setOnCloseRequest( (e)->
+            {
+                DiscordRpcHandler.NewPresence("Idle","", false);
+            });
             stage.show();
 
             pvc.Set(stage, galleryDirPath, shouldBlur);

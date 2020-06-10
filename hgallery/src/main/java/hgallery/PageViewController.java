@@ -49,6 +49,10 @@ public class PageViewController {
      */
     private int page = 0;
     /**
+     * 開始閱讀的UNIX時間
+     */
+    private long startTime = 0;
+    /**
      * 
      */
     private String albumName = "";
@@ -83,6 +87,7 @@ public class PageViewController {
         albumName = galleryDir.getName();
         blur = shouldblur;
         this.stage = stage;
+        startTime = System.currentTimeMillis();
     }
 
     @FXML
@@ -169,7 +174,7 @@ public class PageViewController {
         }
         
         // set discord
-        DiscordRpcHandler.NewPresence( "Reading"+albumName, "Page "+(page+1)+" / "+(files.length) );
+        DiscordRpcHandler.NewPresence( "Reading "+albumName, "Page "+(page+1)+" / "+(files.length) , startTime);
 
     }
 
