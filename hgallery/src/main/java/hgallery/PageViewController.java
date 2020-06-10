@@ -314,7 +314,7 @@ public class PageViewController {
         dragPrevY = y;
 
         Resize(); 
-        Debug.Log("Drag Continue! dx="+dx+" dy="+dy, ConsoleColor.BLUE);
+        //Debug.Log("Drag Continue! dx="+dx+" dy="+dy, ConsoleColor.BLUE);
     }
 
     @FXML

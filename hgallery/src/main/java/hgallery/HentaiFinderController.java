@@ -14,6 +14,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import hgallery.Debug.ConsoleColor;
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -28,7 +29,14 @@ public class HentaiFinderController
     @FXML
     private void initialize()
     {
-        textField.requestFocus();
+        Platform.runLater(new Runnable() 
+        {
+            @Override
+            public void run() 
+            {
+                textField.requestFocus();
+            }
+        });
     }
 
     @FXML
@@ -99,7 +107,7 @@ public class HentaiFinderController
             }
             catch (Exception e)
             {
-                MessageBoxController.CreateMessageBox("錯誤", "無法解析車名"+attempt);
+                MessageBoxController.CreateMessageBox("找不到沒有結果", "無法解析車名"+attempt);
                 Debug.Log("無法解析車名"+attempt+"："+e, ConsoleColor.RED);
             }
         }

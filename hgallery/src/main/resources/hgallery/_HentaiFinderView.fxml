@@ -1,17 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Glow?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.HentaiFinderController">
    <children>
-      <TextField fx:id="textField" layoutX="47.0" layoutY="34.0" onAction="#Execute" prefHeight="44.0" prefWidth="480.0" promptText="輸入 6 位車號 / 車名" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="25.0">
+      <Label alignment="CENTER" text="輸入 6 位車牌 / 車名" textFill="WHITE" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="10.0">
+         <effect>
+            <Glow level="0.5" />
+         </effect>
+      </Label>
+      <TextField fx:id="textField" alignment="CENTER" layoutX="47.0" layoutY="34.0" onAction="#Execute" prefHeight="72.0" prefWidth="500.0" promptText="輸入 6 位車號 / 車名" style="-fx-background-color: black; -fx-border-radius: 3; -fx-border-color: white; -fx-text-fill: yellow;" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="30.0">
          <font>
-            <Font size="15.0" />
+            <Font size="30.0" />
          </font>
+         <effect>
+            <Glow level="1.0" />
+         </effect>
       </TextField>
-      <AnchorPane fx:id="container" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="100.0" />
+      <AnchorPane fx:id="container" layoutY="127.0" prefHeight="273.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="127.0" />
    </children>
 </AnchorPane>
