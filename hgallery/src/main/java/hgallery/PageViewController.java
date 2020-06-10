@@ -29,12 +29,21 @@ import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
-public class PageViewController {
+public class PageViewController 
+{    
     @FXML private AnchorPane ap;
     @FXML private Button butt_overlay;
     @FXML private ImageView img;
     @FXML private ImageView icon_l, icon_r;
     @FXML private Label lab_page, lab_name, lab_status;
+
+
+    /**
+     * 是否正在顯示？
+     */
+    public static boolean isShowing = false;
+
+
 
     /**
      * My stage
@@ -44,6 +53,10 @@ public class PageViewController {
      * 圖片網址s
      */
     private String[] picPaths = {};
+    /**
+     * 讀到的圖片
+     */
+    private Image[] loadedPics = {};
     /**
      * 要模糊？
      */
@@ -95,11 +108,9 @@ public class PageViewController {
              tmp.add( f.toURI().toURL().toString() );
         }
         picPaths = tmp.toArray(String[]::new);
-
+        loadedPics = new Image[picPaths.length];
         albumName = galleryDir.getName();
-        blur = shouldblur;
-        this.stage = stage;
-        startTime = System.currentTimeMillis();
+        Set_Common(stage, shouldblur);
     }
 
     public void Set(Stage stage, Comic hon, boolean shouldblur) 
@@ -110,11 +121,20 @@ public class PageViewController {
             tmp.add(AlbumFileReader.GetHonImagePath(hon, i+1));
         }
         picPaths = tmp.toArray(String[]::new);
-
+        loadedPics = new Image[picPaths.length];
         albumName = hon.getTitle().toString();
+        Set_Common(stage, shouldblur);
+    }
+
+    private void Set_Common(Stage stage, boolean shouldblur)
+    {
         blur = shouldblur;
         this.stage = stage;
-        startTime = System.currentTimeMillis();
+        startTime = System.currentTimeMillis();     
+        for(int i = 0; i < 3 /* PicDlThreadCount */; i++)
+        {
+            AlbumFileReader.LoadImagesThread(picPaths, loadedPics, i+1);
+        }
     }
 
 
@@ -185,8 +205,12 @@ public class PageViewController {
         // set url
         try
         {
-            Image i = new Image(picPaths[page], 0, 1800, true, true, true);
-            img.setImage(i);
+            if(loadedPics[page] == null)
+            {
+                loadedPics[page] = AlbumFileReader.LoadImage(picPaths[page]);
+            }
+            
+            img.setImage(loadedPics[page]);
 
             // blur?
             if(blur)

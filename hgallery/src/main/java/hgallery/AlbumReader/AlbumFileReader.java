@@ -6,15 +6,13 @@ import java.net.MalformedURLException;
 import com.github.ttdyce.model.Comic;
 
 import hgallery.Debug;
+import hgallery.PageViewController;
 import hgallery.Debug.ConsoleColor;
+import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
 public class AlbumFileReader 
 {
-
-    public AlbumFileReader() 
-    {
-
-    }
 
     public static boolean IsValidPicType(File file) 
     {
@@ -85,7 +83,9 @@ public class AlbumFileReader
     public static String GetHonThumbnailPath(Comic hon)
     {
         // https://t5.nhentai.net/galleries/1656422/cover.jpg
-        return "https://t5.nhentai.net/galleries/"+hon.getMid()+"/cover.jpg";
+        String ty = hon.getPageTypes()[0];
+        String ext = GetHonExt(ty);
+        return "https://t5.nhentai.net/galleries/"+hon.getMid()+"/cover."+ext;
     }
 
     /**
@@ -104,4 +104,53 @@ public class AlbumFileReader
         return null;
     }
 
+    /**
+     * 回傳下載圖片處理續，會直接開始跑
+     */
+    public static Thread LoadImagesThread(String[] paths, Image[] imgArray, int startIndex)
+    {
+        Thread t = new Thread(new Runnable()
+        {
+            @Override
+            public void run() 
+            {
+                for(int i = startIndex; i < paths.length; i++)
+                {
+                    if(imgArray[i] != null)
+                        continue;
+                    
+                    if(!PageViewController.isShowing)
+                    {
+                        Debug.Log("Image DL Interupted：主人被關掉ㄌ...");
+                        return;
+                    }
+                        
+                    Debug.Log("正在下載第 "+i+" 頁...");
+                    imgArray[i] = LoadImage(paths[i]);
+
+                    while(imgArray[i].getProgress() < 1)
+                    {
+                        try 
+                        {
+						    Thread.sleep(100 + i*100);
+                        } 
+                        catch (InterruptedException e) 
+                        {
+                            Debug.Log("Image DL Interupted: Exception");
+                            return;
+					    }
+                    }
+                }
+                Debug.Log("Image DL Interupted：下載完成");
+            }
+        }) ;  
+        t.setName("Gallery Download Thread"); 
+        t.start(); 
+        return t;
+    }
+
+    public static Image LoadImage(String path)
+    {
+        return new Image(path, 0, 1800, true, true, true);
+    }
 }

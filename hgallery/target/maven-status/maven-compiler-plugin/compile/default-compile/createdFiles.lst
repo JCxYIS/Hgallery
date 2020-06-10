@@ -16,6 +16,7 @@ hgallery\SettingController.class
 hgallery\DiscordRPC\DiscordRpcHandler.class
 hgallery\Interfaces\ButtonPressEvent.class
 hgallery\GalleryController$1.class
+hgallery\AlbumReader\AlbumFileReader$1.class
 hgallery\HentaiFinderController.class
 hgallery\App.class
 hgallery\HentaiFinderController$2.class

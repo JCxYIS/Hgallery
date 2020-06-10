@@ -92,7 +92,9 @@ public class GalleryFractionController
             stage.setOnCloseRequest( (e)->
             {
                 DiscordRpcHandler.NewPresence("Idle","");
+                PageViewController.isShowing = false;
             });
+            PageViewController.isShowing = true;
             stage.show();
 
             if(galleryDirPath != null)
