@@ -108,9 +108,12 @@ public class MainController implements Initializable
         else if(sauce == butt_safebox)
         {
             SetTitle("保險箱");
-            var l = SetFXML("_GalleryView.fxml");
-            var ct = (GalleryController)l.getController();
-            ct.Set(FileOperate.GetHentais(), true);
+            MessageBoxController.CreatePasswordInput(()->
+            {
+                var l = SetFXML("_GalleryView.fxml");
+                var ct = (GalleryController)l.getController();
+                ct.Set(FileOperate.GetHentais(), true);
+            });
         }
         else if(sauce == butt_hentai)
         {
