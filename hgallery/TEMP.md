@@ -52,3 +52,10 @@ Platform.runLater(new Runnable()
     }
 });
 ```
+
+```
+mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile="E:/Documents/NCU-CSLab-FinalProject/hgallery/src/main/lib/discord-rpc.jar"
+```
+```
+mvn clean javafx:run
+```

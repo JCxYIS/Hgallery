@@ -9,8 +9,14 @@
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
     </properties>
-    <dependencies>
 
+
+    <dependencies>
+        <dependency>
+            <groupId>com.github.Vatuu</groupId>
+	        <artifactId>discord-rpc</artifactId>
+	        <version>1.5.0</version>
+        </dependency>        
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-controls</artifactId>
@@ -22,6 +28,8 @@
             <version>13</version>
         </dependency>
     </dependencies>
+
+
     <build>
         <plugins>
             <plugin>
