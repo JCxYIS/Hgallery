@@ -21,7 +21,7 @@ import hgallery.Settings.Settings;
  */
 public class App extends Application 
 {
-    public static final String version = "v.1.48";
+    public static final String version = "v.0.2.50";
 
 
     private static Scene scene;
@@ -43,7 +43,7 @@ public class App extends Application
         scene = new Scene( LoadFXML("Main") );
 
         // set icon
-        stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
+        stage.getIcons().add(new Image(App.class.getResourceAsStream("images/HgB.png"))); 
         stage.setTitle("Hgallery");
 
         // show

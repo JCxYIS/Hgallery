@@ -26,7 +26,7 @@ public class DiscordRpcHandler
             .setReadyEventHandler((user) -> 
             {
                 Debug.Log("Discord已連接：連接至" + user.username + "#" + user.discriminator + "", ConsoleColor.CYAN);
-                NewPresence("Idle", "");
+                NewPresence("Idle", "", false);
             })
             .setErroredEventHandler((i,s)->
             {
@@ -69,7 +69,14 @@ public class DiscordRpcHandler
 
     public static void NewPresence(String state, String detail)
     {
-        DiscordRichPresence rich = new DiscordRichPresence.Builder(state).setDetails(detail).build();
+        NewPresence(state, detail, -1);
+    }
+    public static void NewPresence(String state, String detail, long setTimestamp)
+    {
+        DiscordRichPresence rich = new DiscordRichPresence.Builder(state).setDetails(detail).build();        
+        if(setTimestamp != -1)
+            rich.startTimestamp = setTimestamp;
+        rich.largeImageKey = "icon";
         DiscordRPC.discordUpdatePresence(rich);
         Debug.Log("Discord設定狀態：" + state + " | " + detail, ConsoleColor.CYAN);
     }
