@@ -8,13 +8,16 @@ import com.github.ttdyce.model.Comic;
 import hgallery.Debug;
 import hgallery.Debug.ConsoleColor;
 
-public class AlbumFileReader {
+public class AlbumFileReader 
+{
 
-    public AlbumFileReader() {
+    public AlbumFileReader() 
+    {
 
     }
 
-    public static boolean IsValidPicType(File file) {
+    public static boolean IsValidPicType(File file) 
+    {
         String extension = "";
         String path = file.getAbsolutePath();
         int i = path.lastIndexOf('.');
@@ -72,14 +75,14 @@ public class AlbumFileReader {
         */
     }
 
-    public static String GetHonImage(Comic hon, int pageStartWith1) 
+    public static String GetHonImagePath(Comic hon, int pageStartWith1) 
     {
         //https://i.nhentai.net/galleries/1656422/3.jpg
         String ty = hon.getPageTypes()[pageStartWith1-1];
         String ext = GetHonExt(ty);
         return "https://i.nhentai.net/galleries/"+hon.getMid()+"/"+pageStartWith1+"."+ext;
     } 
-    public static String GetHonThumbnail(Comic hon)
+    public static String GetHonThumbnailPath(Comic hon)
     {
         // https://t5.nhentai.net/galleries/1656422/cover.jpg
         return "https://t5.nhentai.net/galleries/"+hon.getMid()+"/cover.jpg";
