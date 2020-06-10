@@ -4,8 +4,12 @@ import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
 
+import com.github.ttdyce.model.Comic;
+
+import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.DiscordRPC.DiscordRpcHandler;
+import hgallery.File.FileOperate;
 import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -33,27 +37,35 @@ public class GalleryFractionController
 
     /**
      * 設定這個按鈕
-     * @param galleryPath
-     * @param thumbPicPath
      * @throws MalformedURLException
      */
-    public void Set(File galleryPath, File thumbPicPath, boolean shouldblur) throws MalformedURLException
+    public void Set(File galleryPath, boolean shouldblur) throws MalformedURLException 
     {
         // set 
         galleryDirPath = galleryPath;
 
-        // set button label
+        // 
         label.setText(galleryDirPath.getName());
+        img.setImage(new Image( AlbumFileReader.GetThumbnailPath(galleryPath), 0, 400, true, true, true));
 
-        // set button thumbnail
-        String localUrl = thumbPicPath.toURI().toURL().toString();
-        //Debug.Log(localUrl);
-        img.setImage(new Image(localUrl, 0, 400, true, true, true));
-
+        //
         this.shouldBlur = shouldblur;
         if(shouldblur)
             img.setEffect(new GaussianBlur(SettingManager.settings.blur));
     }
+    public void Set(Comic hon, boolean shouldblur)
+    {
+        // set
+        label.setText(hon.getTitle().toString());
+        img.setImage(new Image( AlbumFileReader.GetHonThumbnail(hon), 0, 400, true, true, true));
+
+        //
+        this.shouldBlur = shouldblur;
+        if(shouldblur)
+            img.setEffect(new GaussianBlur(SettingManager.settings.blur));
+    }
+
+
 
     @FXML 
     private void onClick()

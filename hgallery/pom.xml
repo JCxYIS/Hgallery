@@ -17,7 +17,13 @@
         </repository>
     </repositories>
 
+
     <dependencies>
+        <dependency>
+	        <groupId>com.github.ttdyce</groupId>
+	        <artifactId>NHentai-API-Java</artifactId>
+	        <version>f550425449</version>
+	    </dependency>
         <dependency>
             <groupId>com.github.Vatuu</groupId>
 	        <artifactId>discord-rpc</artifactId>

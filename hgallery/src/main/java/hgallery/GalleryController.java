@@ -1,7 +1,10 @@
 package hgallery;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
+
+import com.github.ttdyce.model.Comic;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.AlbumReader.AlbumFileReader;
@@ -19,13 +22,19 @@ public class GalleryController
     @FXML private TilePane container;
 
     private ArrayList<Node> albums = new ArrayList<Node>();
-    private File[] albumDirPaths;
+    private File[] albumDirPaths = {};
+    private Comic[] honPaths = {};
     private boolean shouldBlur;
 
 
     public void Set(File[] albumPaths, boolean shouldblur)
     {
         albumDirPaths = albumPaths;
+        this.shouldBlur = shouldblur;        
+    }
+    public void Set(Comic[] hPaths, boolean shouldblur)
+    {
+        honPaths = hPaths;
         this.shouldBlur = shouldblur;        
     }
 
@@ -52,32 +61,35 @@ public class GalleryController
     {
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
 
-        // get directories
-        File[] dirs = albumDirPaths;
-
         // print it
-        for(int i = 0; i < dirs.length; i++)
+        for(int i = 0; i < albumDirPaths.length; i++)
         {
             try
-            {
-                // special folder! skip
-                if(dirs[i].getName().equals("_thumbnails"))
-                    continue;
-
-                // make fraction (node)
+            {               
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
                 Node newItem = fxmlLoader.load();
- 
-                // Set properties of this album
-                GalleryFractionController c = fxmlLoader.getController();
-                c.Set( dirs[i], AlbumFileReader.GetThumbnailPath(dirs[i]),  shouldBlur);
-                
-                // add.
+                GalleryFractionController g =  fxmlLoader.getController();
+                g.Set( albumDirPaths[i], shouldBlur);
                 albums.add(newItem);
             }
             catch (Exception e)
             {
-                Debug.Log("無法製作一個GALLERY清單("+dirs[i].getName()+")"+e.getStackTrace(), ConsoleColor.RED);
+                Debug.Log("無法製作一個GALLERY清單("+albumDirPaths[i].getName()+")"+e.getStackTrace(), ConsoleColor.RED);
+            }
+        }
+        for(int i = 0; i <honPaths.length; i++)
+        {
+            try
+            {               
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
+                Node newItem = fxmlLoader.load();
+                GalleryFractionController g =  fxmlLoader.getController();
+                g.Set( honPaths[i], shouldBlur);
+                albums.add(newItem);
+            }
+            catch (Exception e)
+            {
+                Debug.Log("無法製作一個GALLERY清單("+honPaths[i].getTitle()+")"+e, ConsoleColor.RED);
             }
         }
 
@@ -95,6 +107,7 @@ public class GalleryController
             }
         }
     }
+
 
     /**
      * 重新調整GALLERY大小
