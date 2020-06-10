@@ -107,7 +107,7 @@ public class HentaiFinderController
         // DEBUG: print them!
         for (Comic comic : hlist) 
         {
-            Debug.Log( "得到本子："+comic.getId()+" | "+comic.getTitle(), ConsoleColor.GREEN);
+            Debug.Log( "搜尋：得到本子："+comic.getId()+" | "+comic.getTitle(), ConsoleColor.GREEN);
         }//316376 cover: jpg
 
         try

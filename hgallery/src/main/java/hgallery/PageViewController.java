@@ -2,6 +2,10 @@ package hgallery;
 
 import java.io.File;
 import java.io.FileFilter;
+import java.net.MalformedURLException;
+import java.util.ArrayList;
+
+import com.github.ttdyce.model.Comic;
 
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
@@ -37,9 +41,9 @@ public class PageViewController {
      */
     private Stage stage;
     /**
-     * 圖片檔案s
+     * 圖片網址s
      */
-    private File[] files;
+    private String[] picPaths = {};
     /**
      * 要模糊？
      */
@@ -73,10 +77,11 @@ public class PageViewController {
 
     /**
      * 設定這個view的參數s
+     * @throws MalformedURLException
      */
-    public void Set(Stage stage, File galleryDir, boolean shouldblur) 
+    public void Set(Stage stage, File galleryDir, boolean shouldblur) throws MalformedURLException 
     {
-        files = galleryDir.listFiles(new FileFilter()
+        File[] files = galleryDir.listFiles(new FileFilter()
         {
             @Override
             public boolean accept(File pathname) 
@@ -84,11 +89,36 @@ public class PageViewController {
                 return AlbumFileReader.IsValidPicType(pathname);
             }
         });
+        ArrayList<String> tmp = new ArrayList<>();
+        for (File f : files) 
+        {
+             tmp.add( f.toURI().toURL().toString() );
+        }
+        picPaths = tmp.toArray(String[]::new);
+
         albumName = galleryDir.getName();
         blur = shouldblur;
         this.stage = stage;
         startTime = System.currentTimeMillis();
     }
+
+    public void Set(Stage stage, Comic hon, boolean shouldblur) 
+    {
+        ArrayList<String> tmp = new ArrayList<>();
+        for(int i = 0; i < hon.getNumOfPages(); i++)
+        {
+            tmp.add(AlbumFileReader.GetHonImagePath(hon, i+1));
+        }
+        picPaths = tmp.toArray(String[]::new);
+
+        albumName = hon.getTitle().toString();
+        blur = shouldblur;
+        this.stage = stage;
+        startTime = System.currentTimeMillis();
+    }
+
+
+
 
     @FXML
     private void initialize() 
@@ -126,7 +156,7 @@ public class PageViewController {
     
     private void NextPage() 
     {
-        if(page < files.length-1)
+        if(page < picPaths.length-1)
         {
             page++;
             SwitchPage();
@@ -149,14 +179,13 @@ public class PageViewController {
 
         // texts
         lab_status.setText("");
-        lab_page.setText( (page+1)+" / "+(files.length) );
+        lab_page.setText( (page+1)+" / "+(picPaths.length) );
         lab_name.setText( albumName );
 
         // set url
         try
         {
-            String picPath = files[page].toURI().toURL().toString();
-            Image i = new Image(picPath, 0, 1800, true, true, true);
+            Image i = new Image(picPaths[page], 0, 1800, true, true, true);
             img.setImage(i);
 
             // blur?
@@ -165,7 +194,7 @@ public class PageViewController {
             else
                 img.setEffect(new GaussianBlur(0));
 
-            Debug.Log("Page："+page+" | "+picPath, ConsoleColor.PURPLE);
+            Debug.Log("Page："+page+" | "+picPaths.length, ConsoleColor.PURPLE);
         }
         catch (Exception e)
         {
@@ -174,7 +203,7 @@ public class PageViewController {
         }
         
         // set discord
-        DiscordRpcHandler.NewPresence( "Reading "+albumName, "Page "+(page+1)+" / "+(files.length) , startTime);
+        DiscordRpcHandler.NewPresence( "Reading "+albumName, "Page "+(page+1)+" / "+(picPaths.length) , startTime);
 
     }
 

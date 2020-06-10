@@ -29,7 +29,8 @@ public class GalleryFractionController
     /**
      * 相簿的資料夾位置
      */
-    private File galleryDirPath;
+    private File galleryDirPath; // path
+    private Comic hon; // or hon
 
     private boolean shouldBlur;
 
@@ -46,7 +47,7 @@ public class GalleryFractionController
 
         // 
         label.setText(galleryDirPath.getName());
-        img.setImage(new Image( AlbumFileReader.GetThumbnailPath(galleryPath), 0, 400, true, true, true));
+        img.setImage(new Image( AlbumFileReader.GetThumbnailPath(galleryPath), 700, 0, true, true, true));
 
         //
         this.shouldBlur = shouldblur;
@@ -56,8 +57,9 @@ public class GalleryFractionController
     public void Set(Comic hon, boolean shouldblur)
     {
         // set
+        this.hon = hon;
         label.setText(hon.getTitle().toString());
-        img.setImage(new Image( AlbumFileReader.GetHonThumbnail(hon), 0, 400, true, true, true));
+        img.setImage(new Image( AlbumFileReader.GetHonThumbnailPath(hon), 700, 0, true, true, true));
 
         //
         this.shouldBlur = shouldblur;
@@ -84,8 +86,7 @@ public class GalleryFractionController
             Scene scene = new Scene(root);
 
             // set stage
-            Stage stage = new Stage();
-            stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
+            Stage stage = new Stage();            
             stage.setScene(scene);
             stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
             stage.setOnCloseRequest( (e)->
@@ -94,7 +95,18 @@ public class GalleryFractionController
             });
             stage.show();
 
-            pvc.Set(stage, galleryDirPath, shouldBlur);
+            if(galleryDirPath != null)
+            {
+                stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
+                pvc.Set(stage, galleryDirPath, shouldBlur);
+            }
+            else
+            {
+                stage.setTitle("Hgallery Viewer: "+hon.getTitle());
+                pvc.Set(stage, hon, shouldBlur);
+            }
+
+
             // Hide this current window (if this is what you want)
             //((Node)(event.getSource())).getScene().getWindow().hide();
         }
