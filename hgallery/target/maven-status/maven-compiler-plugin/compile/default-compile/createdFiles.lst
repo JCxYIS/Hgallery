@@ -1,4 +1,5 @@
 hgallery\GalleryFractionController.class
+hgallery\DiscordRPC\DiscordRpcHandler.class
 hgallery\GalleryController$1.class
 hgallery\GalleryController.class
 module-info.class
@@ -11,6 +12,7 @@ hgallery\PageViewController$1.class
 hgallery\PageViewController.class
 hgallery\ControllerUtility.class
 hgallery\GalleryController$2.class
+hgallery\DiscordRPC\DiscordRpcHandler$1.class
 hgallery\Debug$ConsoleColor.class
 hgallery\MainController.class
 hgallery\File\FileOperate$1.class

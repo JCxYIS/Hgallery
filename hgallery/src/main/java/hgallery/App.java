@@ -7,10 +7,12 @@ import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import net.arikia.dev.drpc.DiscordRPC;
 
 import java.io.IOException;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.DiscordRPC.DiscordRpcHandler;
 import hgallery.Settings.SettingManager;
 import hgallery.Settings.Settings;
 
@@ -28,6 +30,7 @@ public class App extends Application
     public static void main(String[] args) 
     {
         SettingManager.Load();
+        DiscordRpcHandler.Init();
         launch();
     }
 
@@ -54,6 +57,7 @@ public class App extends Application
     {
         Debug.Log("掰掰！", ConsoleColor.GREEN);
         SettingManager.Save();
+        DiscordRpcHandler.Stop();
     }
     
 

@@ -5,6 +5,7 @@ import java.io.FileFilter;
 
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
+import hgallery.DiscordRPC.DiscordRpcHandler;
 import hgallery.Settings.SettingManager;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -167,6 +168,9 @@ public class PageViewController {
             lab_status.setText("無法顯示");
         }
         
+        // set discord
+        DiscordRpcHandler.NewPresence( "Reading"+albumName, "Page "+(page+1)+" / "+(files.length) );
+
     }
 
     @FXML 
