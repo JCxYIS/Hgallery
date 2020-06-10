@@ -4,6 +4,7 @@ E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\Settings\Set
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\SettingController.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\Debug.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\Encryption\Encryption.java
+E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\HentaiFinderController.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\MessageBoxController.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\GalleryController.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\GalleryFractionController.java
@@ -11,7 +12,6 @@ E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\App.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\AlbumReader\AlbumFileReader.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\File\CreateThumbnail.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\MainController.java
-E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\module-info.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\Settings\SettingManager.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\File\FileOperate.java
 E:\Documents\NCU-CSLab-FinalProject\hgallery\src\main\java\hgallery\Interfaces\ButtonPressEvent.java

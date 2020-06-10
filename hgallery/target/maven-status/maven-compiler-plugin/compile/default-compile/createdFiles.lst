@@ -7,6 +7,7 @@ hgallery\PageViewController$1.class
 hgallery\PageViewController.class
 hgallery\DiscordRPC\DiscordRpcHandler$1.class
 hgallery\Debug$ConsoleColor.class
+hgallery\HentaiFinderController$1.class
 hgallery\MainController.class
 hgallery\File\FileOperate$1.class
 hgallery\Settings\SettingManager.class
@@ -15,8 +16,9 @@ hgallery\SettingController.class
 hgallery\DiscordRPC\DiscordRpcHandler.class
 hgallery\Interfaces\ButtonPressEvent.class
 hgallery\GalleryController$1.class
-module-info.class
+hgallery\HentaiFinderController.class
 hgallery\App.class
+hgallery\HentaiFinderController$2.class
 hgallery\File\FileOperate.class
 hgallery\ControllerUtility.class
 hgallery\GalleryController$2.class

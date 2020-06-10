@@ -117,8 +117,8 @@ public class MainController implements Initializable
         }
         else if(sauce == butt_hentai)
         {
-            // TODO Hentai
             SetTitle("高速公路");
+            SetFXML("_HentaiFinderView.fxml");
         }
     }
 
