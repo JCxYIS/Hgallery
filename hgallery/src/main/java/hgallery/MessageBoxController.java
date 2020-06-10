@@ -16,6 +16,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.image.Image;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -25,6 +26,7 @@ public class MessageBoxController
     @FXML Label lab_title;
     @FXML Label lab_msg;
     @FXML PasswordField pswField;
+    @FXML HBox hbox_buttParent;
     @FXML Button butt_confirm;
     @FXML Button butt_cancel;
 
@@ -56,7 +58,8 @@ public class MessageBoxController
             Debug.Log("確認。", ConsoleColor.BLUE);          
         }
 
-        onConfirmClicked.Action();
+        if(onConfirmClicked != null)
+            onConfirmClicked.Action();
         myStage.close();
     }
 
@@ -72,7 +75,10 @@ public class MessageBoxController
 
     //--------------------------------------------------------------
     
-
+    public static MessageBoxController CreateMessageBox(String title, String msg)
+    {
+        return CreateMessageBox(title, msg, null, false);
+    }
     public static MessageBoxController CreateMessageBox(String title, String msg, ButtonPressEvent onConfirm, boolean showCancel)
     {
 		var c = CreateWindow();
@@ -80,8 +86,8 @@ public class MessageBoxController
         c.lab_msg.setText(msg);
 
         // remove stuffs
-        if(showCancel)
-            c.pane.getChildren().remove(c.butt_cancel);
+        if(!showCancel)
+            c.hbox_buttParent.getChildren().remove(c.butt_cancel);
         c.pane.getChildren().remove(c.pswField);
 
         c.onConfirmClicked = onConfirm;
