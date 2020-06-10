@@ -73,10 +73,17 @@ public class DiscordRpcHandler
     }
     public static void NewPresence(String state, String detail, long setTimestamp)
     {
-        DiscordRichPresence rich = new DiscordRichPresence.Builder(state).setDetails(detail).build();        
+        DiscordRichPresence rich =  new DiscordRichPresence(); //new DiscordRichPresence.Builder(state).setDetails(detail).build();
+        
+        // set param        
+        rich.state = state;
+        rich.details = detail;
         if(setTimestamp != -1)
             rich.startTimestamp = setTimestamp;
         rich.largeImageKey = "icon";
+        rich.largeImageText = "Hgallery is JCxYIS' final project of NCU 計算機實習 (Introduction to Computer Science - Lab)";
+
+        // set
         DiscordRPC.discordUpdatePresence(rich);
         Debug.Log("Discord設定狀態：" + state + " | " + detail, ConsoleColor.CYAN);
     }
