@@ -75,13 +75,24 @@ public class DiscordRpcHandler
     {
         DiscordRichPresence rich =  new DiscordRichPresence(); //new DiscordRichPresence.Builder(state).setDetails(detail).build();
         
+        // trim 
+        Debug.Log(state.length());
+        if(state.length() >= 127)
+        {
+            state = state.substring(0, 120) + "…";
+        }
+        if(detail.length() >= 127)
+        {
+            detail = detail.substring(0, 120) + "…";
+        }
+
         // set param        
         rich.state = state;
         rich.details = detail;
         if(setTimestamp != -1)
             rich.startTimestamp = setTimestamp;
         rich.largeImageKey = "icon";
-        rich.largeImageText = "Hgallery is JCxYIS' final project of NCU 計算機實習 (Introduction to Computer Science - Lab)";
+        rich.largeImageText = "Hgallery is JCxYIS' final project of NCU Introduction to Computer Science - Lab";
 
         // set
         DiscordRPC.discordUpdatePresence(rich);
