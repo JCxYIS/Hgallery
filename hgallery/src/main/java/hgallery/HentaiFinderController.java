@@ -61,7 +61,7 @@ public class HentaiFinderController
             @Override
             public void onReponse(String response) 
             {
-                Debug.Log("Response:\n"+response);
+                //Debug.Log("Response:\n"+response);
                 JsonObject object = new JsonParser().parse(response).getAsJsonObject();
                 Gson gson = new Gson();
                 Comic comic = gson.fromJson(object, Comic.class);
@@ -73,7 +73,7 @@ public class HentaiFinderController
             @Override
             public void onReponse(String response) 
             {
-                Debug.Log("Response:\n"+response);
+                //Debug.Log("Response:\n"+response);
                 JsonArray array = new JsonParser().parse(response).getAsJsonArray();
                 Gson gson = new Gson();
                 

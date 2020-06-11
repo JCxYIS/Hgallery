@@ -76,12 +76,11 @@ public class DiscordRpcHandler
         DiscordRichPresence rich =  new DiscordRichPresence(); //new DiscordRichPresence.Builder(state).setDetails(detail).build();
         
         // trim 
-        Debug.Log(state.length());
-        if(state.length() >= 127)
+        if(state.length() >= 121)
         {
             state = state.substring(0, 120) + "…";
         }
-        if(detail.length() >= 127)
+        if(detail.length() >= 121)
         {
             detail = detail.substring(0, 120) + "…";
         }
