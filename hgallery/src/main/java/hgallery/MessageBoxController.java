@@ -34,6 +34,8 @@ public class MessageBoxController
     private boolean isPswInput = false;
     private Stage myStage;
 
+    private static MessageBoxController pswInputInstance;
+
     
 
     @FXML 
@@ -41,6 +43,7 @@ public class MessageBoxController
     {
         if(isPswInput)
         {            
+            pswInputInstance = null;
             if( Encryption.validatePassword( pswField.getText(), SettingManager.settings.pswEncrypted ) )
             {
                 Debug.Log("密碼正確", ConsoleColor.GREEN);
@@ -51,7 +54,7 @@ public class MessageBoxController
                 CreateMessageBox("密碼錯誤", "爛耶", ()->{CreatePasswordInput(onConfirmClicked);}, false);
                 myStage.close();
                 return;
-            }
+            }            
         }
         else
         {
@@ -101,10 +104,16 @@ public class MessageBoxController
             CreateMessageBox("密碼未設定", "請先去設定密碼");
             return null;
         }
+        if(pswInputInstance != null)
+        {
+            pswInputInstance.myStage.close();
+            Debug.Log("一個輸入密碼instance存在！關閉他.");
+        }
 
         var c = CreateWindow();
         c.onConfirmClicked = onPswMatch;
         c.isPswInput = true;
+        pswInputInstance = c;
         return c;
     }
     private static MessageBoxController CreateWindow()
