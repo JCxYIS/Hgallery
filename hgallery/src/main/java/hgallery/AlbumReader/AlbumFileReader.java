@@ -108,7 +108,7 @@ public class AlbumFileReader
      * 回傳下載圖片處理續，會直接開始跑
      */
     public static Thread LoadImagesThread(String[] paths, Image[] imgArray, int startIndex)
-    {
+    {        
         Thread t = new Thread(new Runnable()
         {
             @Override
@@ -153,6 +153,7 @@ public class AlbumFileReader
         }) ;  
         t.setName("Gallery Download Thread"); 
         t.start(); 
+        App.runningThreads.add(t);
         return t;
     }
 

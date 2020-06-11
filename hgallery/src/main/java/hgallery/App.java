@@ -8,6 +8,7 @@ import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.DiscordRPC.DiscordRpcHandler;
@@ -19,9 +20,9 @@ import hgallery.Settings.SettingManager;
 public class App extends Application 
 {
     public static boolean isExited = false;
-    public static final String version = "v.0.4.5";
+    public static final String version = "v.0.5.0";
 
-
+    public static ArrayList<Thread> runningThreads = new ArrayList<>();
     private static Scene scene;
 
 
@@ -56,6 +57,17 @@ public class App extends Application
         Debug.Log("掰掰！", ConsoleColor.GREEN);
         SettingManager.Save();
         DiscordRpcHandler.Stop();
+        for (Thread thread : runningThreads) 
+        {
+            try
+            {
+                thread.interrupt();
+            }
+            catch (Exception e)
+            {
+                
+            }
+        }
         isExited = true;
     }
     
