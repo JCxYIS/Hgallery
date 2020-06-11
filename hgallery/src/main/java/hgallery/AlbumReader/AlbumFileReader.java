@@ -10,7 +10,6 @@ import hgallery.Debug;
 import hgallery.PageViewController;
 import hgallery.Debug.ConsoleColor;
 import javafx.scene.image.Image;
-import javafx.stage.Stage;
 
 public class AlbumFileReader 
 {
@@ -115,6 +114,13 @@ public class AlbumFileReader
             @Override
             public void run() 
             {
+                // delay
+                try 
+                {
+				    Thread.sleep(startIndex * 500);
+                } catch (InterruptedException e) {}
+                
+                // main loopp
                 for(int i = startIndex; i < paths.length; i++)
                 {
                     if(imgArray[i] != null)
@@ -133,7 +139,7 @@ public class AlbumFileReader
                     {
                         try 
                         {
-						    Thread.sleep(100 + i*100);
+						    Thread.sleep(500);
                         } 
                         catch (InterruptedException e) 
                         {

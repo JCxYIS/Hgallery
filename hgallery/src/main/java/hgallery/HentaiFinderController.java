@@ -125,7 +125,7 @@ public class HentaiFinderController
             container.getChildren().add(gal);
             ControllerUtility.FitAnchorPlane(gal);
             var ct = (GalleryController)loader.getController();
-            ct.Set( hlist.toArray(Comic[]::new) , false);
+            ct.Set( hlist.toArray(Comic[]::new) , true);
         }
         catch (Exception e)
         {
