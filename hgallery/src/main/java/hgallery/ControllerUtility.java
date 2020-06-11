@@ -22,7 +22,7 @@ public class ControllerUtility
         }
         catch (Exception e)
         {
-            Debug.Log("無法使子物件貼合母Anchor Plane！"+e.getStackTrace(), ConsoleColor.RED);
+            Debug.Log("無法使子物件貼合母Anchor Plane！"+e, ConsoleColor.RED);
         }
     }
 }

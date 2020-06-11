@@ -71,7 +71,7 @@ public class GalleryController
             }
             catch (Exception e)
             {
-                Debug.Log("無法製作一個GALLERY清單("+albumDirPaths[i].getName()+")"+e.getStackTrace(), ConsoleColor.RED);
+                Debug.Log("無法製作一個GALLERY清單("+albumDirPaths[i].getName()+")"+e, ConsoleColor.RED);
             }
         }
         for(int i = 0; i <honPaths.length; i++)

@@ -157,7 +157,7 @@ public class MainController implements Initializable
         }
         catch (final IOException e)
         {
-            Debug.Log(e.getStackTrace(), ConsoleColor.RED);
+            Debug.Log(e, ConsoleColor.RED);
             return null;
         }
         
