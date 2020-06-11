@@ -59,3 +59,6 @@ mvn org.apache.maven.plugins:maven-install-plugin:2.5.2:install-file -Dfile="E:/
 ```
 mvn clean javafx:run
 ```
+```
+mvn package
+```
