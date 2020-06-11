@@ -116,7 +116,7 @@ public class GalleryFractionController
             }
             catch (IOException e) 
             {
-                Debug.Log(e.getStackTrace(), ConsoleColor.RED);
+                Debug.Log(e, ConsoleColor.RED);
             }
         }
         // 右鍵
