@@ -1,16 +1,12 @@
 package hgallery;
 
-import java.net.URL;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ResourceBundle;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.Encryption.Encryption;
 import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
-import javafx.fxml.Initializable;
-import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;

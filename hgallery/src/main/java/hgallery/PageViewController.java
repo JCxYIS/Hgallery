@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 import com.github.ttdyce.model.Comic;
 
-import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
+import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.DiscordRPC.DiscordRpcHandler;
 import hgallery.Settings.SettingManager;
 import javafx.application.Platform;
@@ -18,14 +18,10 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.Dragboard;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseDragEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.ScrollEvent;
-import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

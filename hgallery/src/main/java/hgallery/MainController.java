@@ -9,7 +9,6 @@ import com.github.ttdyce.model.Comic;
 import hgallery.Debug.ConsoleColor;
 import hgallery.File.FileOperate;
 import hgallery.Settings.RuntimeSettings;
-import hgallery.Settings.SettingManager;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -110,7 +109,7 @@ public class MainController implements Initializable
         }
         else
         {
-            SetTitle("[搜尋FB：中央孫友會] 大膽無畏 揭竿起義 蘿莉控的辛亥革命 變態紳士統統爆衣 下限無底 幼女使用過的物品 每天都要舔來舔去 吾等預備犯罪大軍 ITDG 向著小學 全速的前進 報案被捕 那算個P 幼女 幼女 平坦的胸口 有著一顆純潔的心 雖然幼女滿天下 卻全是水中花 現實世界生活中 只能做猥瑣夢 夢中名為伊甸園 我永恆的愛戀 用那小小身體 侍奉我的心 幼女夢幻世界 我等希望之地 一聲蘿莉音響起 是天使的聲音 粉紅色的裙襬下 是神之救濟啊 就算斷頭台前 無悔控蘿莉");
+            SetTitle("請輸入密碼                                                                                                     [請搜尋FB：中央孫友會] 大膽無畏 揭竿起義 蘿莉控的辛亥革命 變態紳士統統爆衣 下限無底 幼女使用過的物品 每天都要舔來舔去 吾等預備犯罪大軍 ITDG 向著小學 全速的前進 報案被捕 那算個P 幼女 幼女 平坦的胸口 有著一顆純潔的心 雖然幼女滿天下 卻全是水中花 現實世界生活中 只能做猥瑣夢 夢中名為伊甸園 我永恆的愛戀 用那小小身體 侍奉我的心 幼女夢幻世界 我等希望之地 一聲蘿莉音響起 是天使的聲音 粉紅色的裙襬下 是神之救濟啊 就算斷頭台前 無悔控蘿莉");
         }
 
         if(sauce == butt_viewLater)

@@ -2,7 +2,6 @@ package hgallery.File;
 
 import java.io.File;
 import java.io.FilenameFilter;
-import java.util.Arrays;
 
 import hgallery.Debug;
 import hgallery.Debug.ConsoleColor;
