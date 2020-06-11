@@ -8,9 +8,8 @@ import java.io.File;
 
 import javax.imageio.ImageIO;
 
-import hgallery.Debug;
 
-public class CreateThumbnail 
+public class CreateThumbnailUtil 
 {
     public static void CreateThumbnail(String filepath, String outputPath) throws Exception 
     {

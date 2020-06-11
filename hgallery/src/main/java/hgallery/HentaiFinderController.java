@@ -1,8 +1,6 @@
 package hgallery;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 import com.github.ttdyce.model.Comic;
 import com.github.ttdyce.model.api.NHAPI;
