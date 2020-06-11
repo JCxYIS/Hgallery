@@ -61,6 +61,7 @@ public class HentaiFinderController
             @Override
             public void onReponse(String response) 
             {
+                Debug.Log("Response:\n"+response);
                 JsonObject object = new JsonParser().parse(response).getAsJsonObject();
                 Gson gson = new Gson();
                 Comic comic = gson.fromJson(object, Comic.class);
@@ -72,6 +73,7 @@ public class HentaiFinderController
             @Override
             public void onReponse(String response) 
             {
+                Debug.Log("Response:\n"+response);
                 JsonArray array = new JsonParser().parse(response).getAsJsonArray();
                 Gson gson = new Gson();
                 
@@ -105,8 +107,8 @@ public class HentaiFinderController
             }
             catch (Exception e)
             {
-                MessageBoxController.CreateMessageBox("找不到沒有結果", "無法解析車名"+attempt);
-                Debug.Log("無法解析車名"+attempt+"："+e, ConsoleColor.RED);
+                MessageBoxController.CreateMessageBox("找不到結果", "找不到 "+attempt);
+                Debug.Log("無法解析車名："+attempt+"："+e, ConsoleColor.RED);
             }
         }
 

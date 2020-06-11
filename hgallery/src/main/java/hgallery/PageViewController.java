@@ -118,7 +118,7 @@ public class PageViewController
         }
         picPaths = tmp.toArray(String[]::new);
         loadedPics = new Image[picPaths.length];
-        albumName = hon.getTitle().toString();
+        albumName = hon.getTitle().toString() + " ["+hon.getId()+"]";
         Set_Common(stage, shouldblur);
     }
 
@@ -223,7 +223,7 @@ public class PageViewController
         }
         
         // set discord
-        DiscordRpcHandler.NewPresence( "Reading "+albumName, "Page "+(page+1)+" / "+(picPaths.length) , startTime);
+        DiscordRpcHandler.NewPresence( /*"Reading "+*/albumName, "Page "+(page+1)+" / "+(picPaths.length) , startTime);
 
     }
 
