@@ -21,7 +21,8 @@ import hgallery.Settings.Settings;
  */
 public class App extends Application 
 {
-    public static final String version = "v.0.3.2";
+    public static boolean isExited = false;
+    public static final String version = "v.0.4.0";
 
 
     private static Scene scene;
@@ -58,6 +59,7 @@ public class App extends Application
         Debug.Log("掰掰！", ConsoleColor.GREEN);
         SettingManager.Save();
         DiscordRpcHandler.Stop();
+        isExited = true;
     }
     
 

@@ -40,7 +40,7 @@ public class MessageBoxController
     private void onConfirmClick() throws NoSuchAlgorithmException, InvalidKeySpecException
     {
         if(isPswInput)
-        {
+        {            
             if( Encryption.validatePassword( pswField.getText(), SettingManager.settings.pswEncrypted ) )
             {
                 Debug.Log("密碼正確", ConsoleColor.GREEN);
@@ -95,6 +95,13 @@ public class MessageBoxController
     }
     public static MessageBoxController CreatePasswordInput(ButtonPressEvent onPswMatch)
     {
+        if(SettingManager.settings.pswEncrypted.equals(""))
+        {
+            Debug.Log("密碼未設定", ConsoleColor.GREEN);
+            CreateMessageBox("密碼未設定", "請先去設定密碼");
+            return null;
+        }
+
         var c = CreateWindow();
         c.onConfirmClicked = onPswMatch;
         c.isPswInput = true;

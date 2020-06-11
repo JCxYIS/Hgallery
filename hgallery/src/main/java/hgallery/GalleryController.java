@@ -1,14 +1,11 @@
 package hgallery;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import com.github.ttdyce.model.Comic;
 
 import hgallery.Debug.ConsoleColor;
-import hgallery.AlbumReader.AlbumFileReader;
-import hgallery.File.FileOperate;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
