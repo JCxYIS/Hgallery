@@ -11,6 +11,14 @@
 -fx-background-color : #1620A1;
 }
 
+
+
+.tooltip
+{
+    -fx-text-fill: rgb(255, 255, 0);
+    -fx-background-color: #2a2727;
+}
+
 .scroll-pane {
     -fx-background-color: #02030A;
 }

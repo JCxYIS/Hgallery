@@ -8,6 +8,9 @@ import java.security.spec.InvalidKeySpecException;
 import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.PBEKeySpec;
 
+import hgallery.Debug;
+import hgallery.Debug.ConsoleColor;
+
 public class Encryption 
 {
     public static String generateStorngPasswordHash(String password)
@@ -46,6 +49,11 @@ public class Encryption
     }
     public static boolean validatePassword(String originalPassword, String storedPassword) throws NoSuchAlgorithmException, InvalidKeySpecException
     {
+        if(storedPassword == null)
+        {
+            Debug.Log("密碼未設定，回傳false", ConsoleColor.YELLOW);
+            return false;
+        }
         String[] parts = storedPassword.split(":");
         int iterations = Integer.parseInt(parts[0]);
         byte[] salt = fromHex(parts[1]);

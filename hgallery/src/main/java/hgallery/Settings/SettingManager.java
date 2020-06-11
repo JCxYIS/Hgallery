@@ -38,12 +38,12 @@ public class SettingManager
         catch (IOException e)
         {
             settings = new Settings();
-            Debug.Log("讀取存檔失敗！"+e.getStackTrace(), ConsoleColor.RED);
+            Debug.Log("讀取存檔失敗！"+e, ConsoleColor.RED);
         }
         catch(ClassNotFoundException e)
         {
             settings = new Settings();
-            Debug.Log("讀取存檔失敗！"+e.getStackTrace(), ConsoleColor.RED);
+            Debug.Log("讀取存檔失敗！"+e, ConsoleColor.RED);
         }
         
     }
@@ -63,7 +63,8 @@ public class SettingManager
         }
         catch(IOException e) 
         {
-            Debug.Log("寫入存檔失敗！"+e.getStackTrace(), ConsoleColor.RED);
+            Debug.Log("寫入存檔失敗！"+e, ConsoleColor.RED);
         }
     }
+
 }

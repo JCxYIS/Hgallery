@@ -9,7 +9,7 @@ import com.github.ttdyce.model.Comic;
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.DiscordRPC.DiscordRpcHandler;
-import hgallery.File.FileOperate;
+import hgallery.Settings.RuntimeSettings;
 import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,6 +19,8 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.GaussianBlur;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 public class GalleryFractionController 
@@ -29,8 +31,8 @@ public class GalleryFractionController
     /**
      * 相簿的資料夾位置
      */
-    private File galleryDirPath; // path
-    private Comic hon; // or hon
+    private File galleryDirPath = null; // path
+    private Comic hon = null; // or hon
 
     private boolean shouldBlur;
 
@@ -70,51 +72,97 @@ public class GalleryFractionController
 
 
     @FXML 
-    private void onClick()
+    private void onClick(MouseEvent event)
     {
-        Debug.Log("點擊相簿 圖庫位置："+galleryDirPath, ConsoleColor.BLUE);
+        // 左鍵
+        if(event.getButton() == MouseButton.PRIMARY)
+        {
+            Debug.Log("點擊相簿 圖庫位置："+galleryDirPath, ConsoleColor.BLUE);
+            // open new window
+            try 
+            { 
+                // set scene
+                Parent root;
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("_PageView.fxml"));
+                root = loader.load();
+                PageViewController pvc = loader.getController();
 
-        // open new window
-        try 
-        { 
-            // set scene
-            Parent root;
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("_PageView.fxml"));
-            root = loader.load();
-            PageViewController pvc = loader.getController();
+                Scene scene = new Scene(root);
 
-            Scene scene = new Scene(root);
+                // set stage
+                Stage stage = new Stage();            
+                stage.setScene(scene);
+                stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
+                stage.setOnCloseRequest( (e)->
+                {
+                    DiscordRpcHandler.NewPresence("Idle","");
+                    PageViewController.isShowing = false;
+                });
+                PageViewController.isShowing = true;
+                stage.show();
 
-            // set stage
-            Stage stage = new Stage();            
-            stage.setScene(scene);
-            stage.getIcons().add(new Image(App.class.getResourceAsStream("images/Hg.png"))); 
-            stage.setOnCloseRequest( (e)->
+                if(galleryDirPath != null)
+                {
+                    stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
+                    pvc.Set(stage, galleryDirPath, shouldBlur);
+                }
+                else
+                {
+                    stage.setTitle("Hgallery Viewer: "+hon.getTitle());
+                    pvc.Set(stage, hon, shouldBlur);
+                }
+                // Hide this current window (if this is what you want)
+                //((Node)(event.getSource())).getScene().getWindow().hide();
+            }
+            catch (IOException e) 
             {
-                DiscordRpcHandler.NewPresence("Idle","");
-                PageViewController.isShowing = false;
-            });
-            PageViewController.isShowing = true;
-            stage.show();
-
-            if(galleryDirPath != null)
+                Debug.Log(e.getStackTrace(), ConsoleColor.RED);
+            }
+        }
+        // 右鍵
+        else if(event.getButton() == MouseButton.SECONDARY)
+        {
+            if(hon == null)
             {
-                stage.setTitle("Hgallery Viewer: "+galleryDirPath.getName());
-                pvc.Set(stage, galleryDirPath, shouldBlur);
+                Debug.Log("無法加入稍後觀看：不是線上本子");
+                return;
             }
             else
             {
-                stage.setTitle("Hgallery Viewer: "+hon.getTitle());
-                pvc.Set(stage, hon, shouldBlur);
+                if(RuntimeSettings.readLater.contains(hon))
+                {
+                    MessageBoxController.CreateMessageBox("我讀完了", "想要從稍後觀看移除？\n"+hon.getTitle(), ()->
+                    {
+                        RuntimeSettings.readLater.add(hon);
+                        MessageBoxController.CreateMessageBox("移除完成", "休息一下吧！\n");
+                    }, true);
+                }
+                else
+                {
+                    MessageBoxController.CreateMessageBox("準備你的衛生紙", "想要加入稍後觀看？\n"+hon.getTitle(), ()->
+                    {
+                        RuntimeSettings.readLater.add(hon);
+                        MessageBoxController.CreateMessageBox("加入完成", "準備好再開車，安全上路！\n注意：稍後觀看內容再關閉程式後會清空！");
+                    }, true);
+                }
             }
-
-
-            // Hide this current window (if this is what you want)
-            //((Node)(event.getSource())).getScene().getWindow().hide();
         }
-        catch (IOException e) 
+        // 中鍵
+        else if(event.getButton() == MouseButton.MIDDLE)
         {
-            Debug.Log(e.getStackTrace(), ConsoleColor.RED);
+            if(hon == null)
+            {
+                Debug.Log("無法儲存線上本子：不是線上本子");
+                return;
+            }
+            else
+            {
+                MessageBoxController.CreateMessageBox("AWSL", "想要把這本儲存起來嗎？\n"+hon.getTitle(), ()->
+                {
+                    // TODO
+                    MessageBoxController.CreateMessageBox("還沒實裝", "敬請期待！");
+                }, true);
+            }
         }
     }
 }

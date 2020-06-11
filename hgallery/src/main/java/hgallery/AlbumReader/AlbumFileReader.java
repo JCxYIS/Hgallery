@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 
 import com.github.ttdyce.model.Comic;
 
+import hgallery.App;
 import hgallery.Debug;
 import hgallery.PageViewController;
 import hgallery.Debug.ConsoleColor;
@@ -119,7 +120,7 @@ public class AlbumFileReader
                     if(imgArray[i] != null)
                         continue;
                     
-                    if(!PageViewController.isShowing)
+                    if(!PageViewController.isShowing || App.isExited)
                     {
                         Debug.Log("Image DL Interupted：主人被關掉ㄌ...");
                         return;

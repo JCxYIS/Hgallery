@@ -8,7 +8,7 @@
 
 <Pane prefHeight="300.0" prefWidth="200.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.GalleryFractionController">
    <children>
-      <Button mnemonicParsing="false" onAction="#onClick" prefHeight="300.0" prefWidth="200.0" stylesheets="@style.css" />
+      <Button mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="300.0" prefWidth="200.0" stylesheets="@style.css" />
       <ImageView fx:id="img" fitHeight="217.0" fitWidth="143.0" layoutX="31.0" layoutY="22.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@images/testAssets/testHgCover.jpg" />

@@ -4,6 +4,7 @@ hgallery\AlbumReader\AlbumFileReader.class
 hgallery\File\CreateThumbnail.class
 hgallery\Encryption\Encryption.class
 hgallery\PageViewController$1.class
+hgallery\Settings\RuntimeSettings.class
 hgallery\PageViewController.class
 hgallery\DiscordRPC\DiscordRpcHandler$1.class
 hgallery\Debug$ConsoleColor.class

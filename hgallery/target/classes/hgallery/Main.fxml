@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Tooltip?>
 <?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Glow?>
@@ -57,6 +58,9 @@
                <padding>
                   <Insets left="50.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="查看相簿 (安全)" />
+               </tooltip>
             </Button>
             <Button fx:id="butt_import" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="匯入">
                <graphic>
@@ -72,6 +76,9 @@
                <padding>
                   <Insets left="50.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="匯入相簿 (圖片資料夾)" />
+               </tooltip>
             </Button>
             <Button fx:id="butt_setting" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="設定">
                <graphic>
@@ -87,6 +94,9 @@
                <padding>
                   <Insets left="50.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="調整設定" />
+               </tooltip>
             </Button>
             <Button alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" visible="false">
                <padding>
@@ -107,6 +117,27 @@
                <padding>
                   <Insets left="50.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="查看已儲存的本子 (危險)" />
+               </tooltip>
+            </Button>
+            <Button fx:id="butt_viewLater" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="稍後觀看">
+               <graphic>
+                  <ImageView fitHeight="23.0" fitWidth="27.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@images/clock.png" />
+                     </image>
+                     <effect>
+                        <ColorAdjust brightness="1.0" />
+                     </effect>
+                  </ImageView>
+               </graphic>
+               <padding>
+                  <Insets left="50.0" />
+               </padding>
+               <tooltip>
+                  <Tooltip text="查看等下才要看的本子 (危險)" />
+               </tooltip>
             </Button>
             <Button fx:id="butt_hentai" alignment="BASELINE_LEFT" graphicTextGap="22.0" mnemonicParsing="false" onAction="#HandleMenuButtonOnclick" prefHeight="42.0" prefWidth="259.0" stylesheets="@style.css" text="退斯妥也老司機">
                <graphic>
@@ -122,6 +153,9 @@
                <padding>
                   <Insets left="50.0" />
                </padding>
+               <tooltip>
+                  <Tooltip text="準備開車 安全上路 (危險)" />
+               </tooltip>
             </Button>
          </children>
       </VBox>
