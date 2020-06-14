@@ -6,6 +6,12 @@
 ### 目錄
 [TOC]
 
+### 系統需求
+[Java 11](https://adoptopenjdk.net/) 以上
+
+直接點開執行或使用指令 `java -jar hgallery-{版本號}.jar`
+
+
 
 ### 特色
 - 閱讀相片
