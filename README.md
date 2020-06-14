@@ -6,11 +6,15 @@
 ### 目錄
 [TOC]
 
-### 系統需求
-[Java 11](https://adoptopenjdk.net/) 以上
+### 下載 & 系統需求
+#### 下載
+- https://github.com/JCxYIS/Hgallery/releases  
+#### 需求：
+- 需要安裝[Java 11](https://adoptopenjdk.net/) 或以上  
 
-直接點開執行或使用指令 `java -jar hgallery-{版本號}.jar`
+直接點開執行 或 使用指令 `java -jar hgallery-{版本號}.jar`  
 
+Have fun!
 
 
 ### 特色
