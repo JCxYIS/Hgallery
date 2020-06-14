@@ -6,6 +6,12 @@
 ### 目錄
 [TOC]
 
+### DISCLAIMER 
+- 不喜歡看本子的請左轉離開💼
+- 我的Code寫很爛(真的)
+- 如果你想要協助改進，提[Issue](https://github.com/JCxYIS/Hgallery/issues)、 [Pull Request](https://github.com/JCxYIS/Hgallery/pulls) 都行，最棒的事莫過於大家一起開車車 🚗
+- 喜歡就去打個星星吧，星星掛在那裏就是很炫泡😎
+
 ### 下載 & 系統需求
 #### 下載
 - https://github.com/JCxYIS/Hgallery/releases  
