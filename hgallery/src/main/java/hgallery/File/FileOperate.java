@@ -26,6 +26,14 @@ public class FileOperate
     }
 
     /**
+     * 取代不能當作檔案名稱的字元為'_'
+     */
+    public static String ToValidFileName(String fileName)
+    {
+        return fileName.replaceAll("[\\\\/:*?\"<>|]", "_");
+    }
+
+    /**
      * 
      */
     private static File[] GetAlbums(String albumPath)
