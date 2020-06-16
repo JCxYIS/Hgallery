@@ -9,6 +9,7 @@ import com.github.ttdyce.model.Comic;
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.DiscordRPC.DiscordRpcHandler;
+import hgallery.File.HentaiDownloader;
 import hgallery.Settings.RuntimeSettings;
 import hgallery.Settings.SettingManager;
 import javafx.fxml.FXML;
@@ -120,7 +121,7 @@ public class GalleryFractionController
             }
         }
         // 右鍵
-        else if(event.getButton() == MouseButton.SECONDARY)
+        else if(event.getButton() == MouseButton.MIDDLE)
         {
             if(hon == null)
             {
@@ -131,7 +132,7 @@ public class GalleryFractionController
             {
                 if(RuntimeSettings.readLater.contains(hon))
                 {
-                    MessageBoxController.CreateMessageBox("我讀完了", "想要從稍後觀看移除？\n"+hon.getTitle(), ()->
+                    MessageBoxController.CreateMessageBox("閱畢", "想要從稍後觀看移除？\n"+hon.getTitle(), ()->
                     {
                         RuntimeSettings.readLater.add(hon);
                         MessageBoxController.CreateMessageBox("移除完成", "休息一下吧！\n");
@@ -148,7 +149,7 @@ public class GalleryFractionController
             }
         }
         // 中鍵
-        else if(event.getButton() == MouseButton.MIDDLE)
+        else if(event.getButton() == MouseButton.SECONDARY)
         {
             if(hon == null)
             {
@@ -159,8 +160,7 @@ public class GalleryFractionController
             {
                 MessageBoxController.CreateMessageBox("AWSL", "想要把這本儲存起來嗎？\n"+hon.getTitle(), ()->
                 {
-                    // TODO 想要把這本儲存起來嗎
-                    MessageBoxController.CreateMessageBox("還沒實裝", "敬請期待！");
+                    HentaiDownloader.DownloadHentai(hon);                    
                 }, true);
             }
         }
