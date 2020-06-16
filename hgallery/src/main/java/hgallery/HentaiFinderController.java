@@ -12,6 +12,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
 import hgallery.Debug.ConsoleColor;
+import hgallery.NHAPI.NhentaiUtility;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -53,45 +54,14 @@ public class HentaiFinderController
         }
         NHAPI api = new NHAPI();
         ArrayList<Comic> hlist = new ArrayList<>();
-
-        
-        // Set ResponceHandler
-        ResponseCallback comicReturnCallback = new ResponseCallback() 
-        {
-            @Override
-            public void onReponse(String response) 
-            {
-                //Debug.Log("Response:\n"+response);
-                JsonObject object = new JsonParser().parse(response).getAsJsonObject();
-                Gson gson = new Gson();
-                Comic comic = gson.fromJson(object, Comic.class);
-                hlist.add(comic);
-            }
-        };
-        ResponseCallback comicListReturnCallback = new ResponseCallback() 
-        {
-            @Override
-            public void onReponse(String response) 
-            {
-                //Debug.Log("Response:\n"+response);
-                JsonArray array = new JsonParser().parse(response).getAsJsonArray();
-                Gson gson = new Gson();
-                
-                for (JsonElement jsonElement : array) 
-                {
-                    Comic c = gson.fromJson(jsonElement, Comic.class);
-                    hlist.add(c);
-                }
-            }
-        }; 
-
+     
 
         // Let's handle this
         if(honId != -1)
         { // is 車牌
             try
             {
-                api.getComic(honId, comicReturnCallback);
+                hlist.add(NhentaiUtility.GetComicByID(api, honId));
             }
             catch (Exception e)
             {
@@ -103,11 +73,11 @@ public class HentaiFinderController
         {
             try
             {
-                api.getComicList(attempt, true, comicListReturnCallback);
+                hlist.addAll(NhentaiUtility.GetListByName(api, attempt));
             }
             catch (Exception e)
             {
-                MessageBoxController.CreateMessageBox("找不到結果", "找不到 "+attempt);
+                MessageBoxController.CreateMessageBox("找不到結果", "無法找到 "+attempt+" 相關的結果");
                 Debug.Log("無法解析車名："+attempt+"："+e, ConsoleColor.RED);
             }
         }
@@ -130,7 +100,6 @@ public class HentaiFinderController
         catch (Exception e)
         {
             Debug.Log("[HENTAIFINDER]列印GALLERY錯誤："+e, ConsoleColor.RED);
-        }
-             
+        }            
     }
 }
