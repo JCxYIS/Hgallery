@@ -14,6 +14,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
@@ -25,6 +26,7 @@ public class MessageBoxController
     @FXML Label lab_title;
     @FXML Label lab_msg;
     @FXML PasswordField pswField;
+    @FXML public ProgressBar progressBar;
     @FXML HBox hbox_buttParent;
     @FXML Button butt_confirm;
     @FXML Button butt_cancel;
@@ -51,7 +53,7 @@ public class MessageBoxController
             {
                 Debug.Log("密碼錯誤", ConsoleColor.GREEN);
                 CreateMessageBox("密碼錯誤", "爛耶", ()->{CreatePasswordInput(onConfirmClicked);}, false);
-                myStage.close();
+                Close();
                 return;
             }            
         }
@@ -62,7 +64,7 @@ public class MessageBoxController
 
         if(onConfirmClicked != null)
             onConfirmClicked.Action();
-        myStage.close();
+        Close();
     }
 
     @FXML
@@ -73,6 +75,18 @@ public class MessageBoxController
     }
 
 
+    public void ToggleConfirmButton(boolean on)
+    {
+        butt_confirm.setDisable(!on);
+    }
+    public void SetMessage(String msg)
+    {
+        lab_msg.setText(msg);
+    }
+    public void Close()
+    {
+        myStage.close();
+    }
 
 
     //--------------------------------------------------------------
@@ -91,8 +105,20 @@ public class MessageBoxController
         if(!showCancel)
             c.hbox_buttParent.getChildren().remove(c.butt_cancel);
         c.pane.getChildren().remove(c.pswField);
+        c.pane.getChildren().remove(c.progressBar);
 
         c.onConfirmClicked = onConfirm;
+        return c;
+    }
+    public static MessageBoxController CreateProgressBarBox(String title, String msg)
+    {
+		var c = CreateWindow();
+        c.lab_title.setText(title);
+        c.lab_msg.setText(msg);
+
+        // remove stuffs
+        c.hbox_buttParent.getChildren().remove(c.butt_cancel);
+        c.pane.getChildren().remove(c.pswField);
         return c;
     }
     public static MessageBoxController CreatePasswordInput(ButtonPressEvent onPswMatch)
@@ -110,6 +136,7 @@ public class MessageBoxController
         }
 
         var c = CreateWindow();
+        c.pane.getChildren().remove(c.progressBar);
         c.onConfirmClicked = onPswMatch;
         c.isPswInput = true;
         pswInputInstance = c;
