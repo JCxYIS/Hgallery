@@ -36,6 +36,7 @@ public class GalleryFractionController
     private Comic hon = null; // or hon
 
     private boolean shouldBlur;
+    private GalleryController galleryController;
 
 
 
@@ -43,7 +44,7 @@ public class GalleryFractionController
      * 設定這個按鈕
      * @throws MalformedURLException
      */
-    public void Set(File galleryPath, boolean shouldblur) throws MalformedURLException 
+    public void Set(File galleryPath, boolean shouldblur, GalleryController gc) throws MalformedURLException 
     {
         // set 
         galleryDirPath = galleryPath;
@@ -56,8 +57,10 @@ public class GalleryFractionController
         this.shouldBlur = shouldblur;
         if(shouldblur)
             img.setEffect(new GaussianBlur(SettingManager.settings.blur));
+        
+        galleryController = gc;
     }
-    public void Set(Comic hon, boolean shouldblur)
+    public void Set(Comic hon, boolean shouldblur, GalleryController gc)
     {
         // set
         this.hon = hon;
@@ -68,6 +71,8 @@ public class GalleryFractionController
         this.shouldBlur = shouldblur;
         if(shouldblur)
             img.setEffect(new GaussianBlur(SettingManager.settings.blur));
+
+        galleryController = gc;
     }
 
 
@@ -130,19 +135,21 @@ public class GalleryFractionController
             }
             else
             {
-                if(RuntimeSettings.readLater.contains(hon))
+                if(RuntimeSettings.ContainsReadLater(hon))
                 {
                     MessageBoxController.CreateMessageBox("閱畢", "想要從稍後觀看移除？\n"+hon.getTitle(), ()->
                     {
-                        RuntimeSettings.readLater.add(hon);
-                        MessageBoxController.CreateMessageBox("移除完成", "休息一下吧！\n");
+                        RuntimeSettings.RemoveReadLater(hon);                        
+                        galleryController.Set(RuntimeSettings.GetReadLater(), false);
+                        galleryController.Print();
+                        MessageBoxController.CreateMessageBox("移除完成", "休息一下吧！\n");                        
                     }, true);
                 }
                 else
                 {
                     MessageBoxController.CreateMessageBox("準備你的衛生紙", "想要加入稍後觀看？\n"+hon.getTitle(), ()->
                     {
-                        RuntimeSettings.readLater.add(hon);
+                        RuntimeSettings.AddReadLater(hon);
                         MessageBoxController.CreateMessageBox("加入完成", "準備好再開車，安全上路！\n注意：稍後觀看內容再關閉程式後會清空！");
                     }, true);
                 }

@@ -119,7 +119,7 @@ public class MainController implements Initializable
                 SetTitle("稍後開車");
                 final var l = SetFXML("_GalleryView.fxml");
                 final var ct = (GalleryController)l.getController();
-                ct.Set(RuntimeSettings.readLater.toArray(Comic[]::new), false);
+                ct.Set(RuntimeSettings.GetReadLater(ct), false);
             });
         }
         else if(sauce == butt_safebox)
