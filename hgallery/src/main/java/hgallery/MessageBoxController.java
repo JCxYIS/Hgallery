@@ -19,6 +19,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 public class MessageBoxController 
 {
@@ -155,6 +156,8 @@ public class MessageBoxController
             mbc.myStage = stage;
             stage.setTitle("Hgallery Message");
             stage.getIcons().add(new Image(MessageBoxController.class.getResourceAsStream("images/Hg.png"))); 
+            stage.setAlwaysOnTop(true);
+            stage.initStyle(StageStyle.UNDECORATED);
             stage.setScene(scene);
             stage.show();
 

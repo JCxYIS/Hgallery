@@ -1,6 +1,7 @@
 package hgallery.Settings;
 
 import java.io.Serializable;
+import java.util.Arrays;
 
 public class Settings implements Serializable
 {
@@ -10,7 +11,7 @@ public class Settings implements Serializable
     public String hentaiPath = "";   
     public String pswEncrypted = "";
     public int blur = 60;
-
+    public Integer[] readLaterIDs = {};
 
     /**
      * Default Values
@@ -30,6 +31,7 @@ public class Settings implements Serializable
         return "galleryPath="+galleryPath+"\n"+
                "hentaiPath="+hentaiPath +"\n"+
                "pswEncrypted="+pswEncrypted+"\n"+
-               "blur="+blur+"\n";
+               "blur="+blur+"\n"+
+               "readLaterIDs="+Arrays.toString(readLaterIDs)+"\n";
     }
 }

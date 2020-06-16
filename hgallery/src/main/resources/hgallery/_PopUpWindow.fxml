@@ -5,50 +5,56 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.effect.Glow?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.MessageBoxController">
+
+<AnchorPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="hgallery.MessageBoxController">
    <children>
-      <Label fx:id="lab_title" alignment="CENTER" layoutX="179.0" layoutY="44.0" prefHeight="105.0" prefWidth="242.0" text="請輸入密碼" textAlignment="CENTER" textFill="WHITE">
-         <font>
-            <Font size="25.0" />
-         </font>
-         <effect>
-            <Glow level="0.65" />
-         </effect>
-      </Label>
-      <Label fx:id="lab_msg" alignment="TOP_CENTER" layoutX="87.0" layoutY="138.0" prefHeight="191.0" prefWidth="426.0" text="Abandon all hope, ye who enter here&#10;ここから入らんとする者は一切の希望を放棄せよ" textAlignment="CENTER" textFill="WHITE" wrapText="true">
-         <font>
-            <Font size="17.0" />
-         </font>
-      </Label>
-      <PasswordField fx:id="pswField" layoutX="131.0" layoutY="209.0" onAction="#onConfirmClick" prefHeight="49.0" prefWidth="338.0" promptText="Kimi no password da">
-         <font>
-            <Font size="15.0" />
-         </font>
-      </PasswordField>
-      <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="209.0" mouseTransparent="true" prefHeight="49.0" prefWidth="338.0" />
-      <HBox fx:id="hbox_buttParent" alignment="CENTER" layoutX="87.0" layoutY="269.0" prefHeight="100.0" prefWidth="426.0" spacing="80.0">
+      <Pane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: black;" AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
          <children>
-            <Button fx:id="butt_confirm" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onConfirmClick" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="確定">
+            <Label fx:id="lab_title" alignment="CENTER" layoutX="179.0" layoutY="44.0" prefHeight="105.0" prefWidth="242.0" text="請輸入密碼" textAlignment="CENTER" textFill="WHITE">
                <font>
-                  <Font size="20.0" />
+                  <Font size="25.0" />
                </font>
                <effect>
-                  <Glow level="0.62" />
+                  <Glow level="0.65" />
                </effect>
-            </Button>
-            <Button fx:id="butt_cancel" cancelButton="true" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="取消">
+            </Label>
+            <Label fx:id="lab_msg" alignment="TOP_CENTER" layoutX="87.0" layoutY="138.0" prefHeight="191.0" prefWidth="426.0" text="Abandon all hope, ye who enter here&#10;ここから入らんとする者は一切の希望を放棄せよ" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
-                  <Font size="20.0" />
+                  <Font size="17.0" />
                </font>
-               <effect>
-                  <Glow level="0.62" />
-               </effect>
-            </Button>
+            </Label>
+            <PasswordField fx:id="pswField" layoutX="131.0" layoutY="209.0" onAction="#onConfirmClick" prefHeight="49.0" prefWidth="338.0" promptText="Kimi no password da">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </PasswordField>
+            <ProgressBar fx:id="progressBar" layoutX="131.0" layoutY="209.0" mouseTransparent="true" prefHeight="49.0" prefWidth="338.0" />
+            <HBox fx:id="hbox_buttParent" alignment="CENTER" layoutX="87.0" layoutY="269.0" prefHeight="100.0" prefWidth="426.0" spacing="80.0">
+               <children>
+                  <Button fx:id="butt_confirm" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onConfirmClick" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="確定">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.62" />
+                     </effect>
+                  </Button>
+                  <Button fx:id="butt_cancel" cancelButton="true" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#onCancelClick" prefHeight="55.0" prefWidth="112.0" stylesheets="@style.css" text="取消">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                     <effect>
+                        <Glow level="0.62" />
+                     </effect>
+                  </Button>
+               </children>
+            </HBox>
          </children>
-      </HBox>
+      </Pane>
    </children>
-</Pane>
+</AnchorPane>

@@ -54,9 +54,16 @@ public class GalleryController
     /**
      * 製作GALLERY清單
      */
-    private void Print()
+    public void Print()
     {
         Debug.Log("製作GALLERY清單...", ConsoleColor.GREEN);
+
+        // remove all child first
+        for (var g : albums)
+        {
+            container.getChildren().remove(g);   
+        }
+        albums.clear();        
 
         // print it
         for(int i = 0; i < albumDirPaths.length; i++)
@@ -66,7 +73,7 @@ public class GalleryController
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
                 Node newItem = fxmlLoader.load();
                 GalleryFractionController g =  fxmlLoader.getController();
-                g.Set( albumDirPaths[i], shouldBlur);
+                g.Set( albumDirPaths[i], shouldBlur, this);
                 albums.add(newItem);
             }
             catch (Exception e)
@@ -81,7 +88,7 @@ public class GalleryController
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("_GalleryFraction.fxml"));
                 Node newItem = fxmlLoader.load();
                 GalleryFractionController g =  fxmlLoader.getController();
-                g.Set( honPaths[i], shouldBlur);
+                g.Set( honPaths[i], shouldBlur, this);
                 albums.add(newItem);
             }
             catch (Exception e)
