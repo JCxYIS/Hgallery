@@ -53,7 +53,7 @@ public class MessageBoxController
             {
                 Debug.Log("密碼錯誤", ConsoleColor.GREEN);
                 CreateMessageBox("密碼錯誤", "爛耶", ()->{CreatePasswordInput(onConfirmClicked);}, false);
-                myStage.close();
+                Close();
                 return;
             }            
         }
@@ -64,7 +64,7 @@ public class MessageBoxController
 
         if(onConfirmClicked != null)
             onConfirmClicked.Action();
-        myStage.close();
+        Close();
     }
 
     @FXML
@@ -74,6 +74,7 @@ public class MessageBoxController
         Debug.Log("取消。", ConsoleColor.BLUE);
     }
 
+
     public void ToggleConfirmButton(boolean on)
     {
         butt_confirm.setDisable(!on);
@@ -81,6 +82,10 @@ public class MessageBoxController
     public void SetMessage(String msg)
     {
         lab_msg.setText(msg);
+    }
+    public void Close()
+    {
+        myStage.close();
     }
 
 

@@ -14,11 +14,13 @@ import hgallery.MessageBoxController;
 import hgallery.AlbumReader.AlbumFileReader;
 import hgallery.Debug.ConsoleColor;
 import hgallery.Settings.SettingManager;
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 
 public class HentaiDownloader 
 {
-    public static Task<Object> mainTask;
+    private static Task<Object> mainTask;
+    private static MessageBoxController progressBox;
 
     public static void DownloadHentai(Comic hon)
     {
@@ -31,13 +33,28 @@ public class HentaiDownloader
         else
         {
             mainTask = MainTask(hon);                  
-            var box = MessageBoxController.CreateProgressBarBox("下載中", "下載"+hon.getTitle().toString());
-            box.progressBar.progressProperty().bind(mainTask.progressProperty());
+            progressBox = MessageBoxController.CreateProgressBarBox("下載中", "你可以放心關閉此視窗，完成後會通知你！");
+            progressBox.progressBar.progressProperty().bind(mainTask.progressProperty());
 
             Thread t = new Thread(mainTask);
             App.runningThreads.add(t);
             t.start();
         }       
+    }
+
+    private static void DownloadHentaiComplete(Comic hon)
+    {
+        mainTask = null;
+        Platform.runLater(new Runnable() 
+        {
+            @Override 
+            public void run() 
+            {
+                progressBox.Close();
+                MessageBoxController.CreateMessageBox("下載完成！", "下載 "+hon.getTitle().toString()+" 完成，請至保險箱查收！");   
+            }
+        });
+        
     }
 
     // 參考：https://www.yiibai.com/javafx/javafx_progressbar.html
@@ -59,14 +76,15 @@ public class HentaiDownloader
                     String inurl  = AlbumFileReader.GetHonImagePath(hon, i);
                     String[] tmp = inurl.split("/");
                     String outurl = outDir + "\\"+ tmp[tmp.length-1];
+                    // DL
                     try(BufferedInputStream in = new BufferedInputStream(new URL(inurl).openStream());
                         FileOutputStream fileOutputStream = new FileOutputStream(outurl)) 
                     {
                         byte[] dataBuffer = new byte[1024];
-                        int bytesRead;
+                        int bytesRead;               
                         while ((bytesRead = in.read(dataBuffer, 0, 1024)) != -1) 
                         {
-                            fileOutputStream.write(dataBuffer, 0, bytesRead);
+                            fileOutputStream.write(dataBuffer, 0, bytesRead);                            
                         }
                     } 
                     catch (IOException e) 
@@ -77,6 +95,7 @@ public class HentaiDownloader
                     updateProgress(i, hon.getNumOfPages());
                     Debug.Log("已下載本子："+i+" / "+hon.getNumOfPages());
                 }
+                DownloadHentaiComplete(hon);
                 return true;
             }
         };

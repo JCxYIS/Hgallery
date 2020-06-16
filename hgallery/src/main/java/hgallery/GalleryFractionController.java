@@ -121,7 +121,7 @@ public class GalleryFractionController
             }
         }
         // 右鍵
-        else if(event.getButton() == MouseButton.MIDDLE)
+        else if(event.getButton() == MouseButton.SECONDARY)
         {
             if(hon == null)
             {
@@ -149,7 +149,7 @@ public class GalleryFractionController
             }
         }
         // 中鍵
-        else if(event.getButton() == MouseButton.SECONDARY)
+        else if(event.getButton() == MouseButton.MIDDLE)
         {
             if(hon == null)
             {
