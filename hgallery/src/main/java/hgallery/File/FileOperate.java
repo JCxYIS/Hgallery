@@ -25,6 +25,16 @@ public class FileOperate
         return GetAlbums(SettingManager.settings.hentaiPath);
     }
 
+
+    public static String ToValidFileName(String rawFileName)
+    {
+        final char[] ILLEGAL_CHARACTERS = { '/', '\n', '\r', '\t', '\0', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':' };
+        for(int i = 0; i < rawFileName.length(); i++) 
+        {
+            if(rawFileName[i] == )
+        }
+    }
+
     /**
      * 
      */

@@ -159,7 +159,7 @@ public class GalleryFractionController
             {
                 MessageBoxController.CreateMessageBox("AWSL", "想要把這本儲存起來嗎？\n"+hon.getTitle(), ()->
                 {
-                    // TODO
+                    // TODO 想要把這本儲存起來嗎
                     MessageBoxController.CreateMessageBox("還沒實裝", "敬請期待！");
                 }, true);
             }
