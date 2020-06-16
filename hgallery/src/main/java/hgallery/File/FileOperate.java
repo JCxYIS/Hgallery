@@ -25,14 +25,12 @@ public class FileOperate
         return GetAlbums(SettingManager.settings.hentaiPath);
     }
 
-
-    public static String ToValidFileName(String rawFileName)
+    /**
+     * 取代不能當作檔案名稱的字元為'_'
+     */
+    public static String ToValidFileName(String fileName)
     {
-        final char[] ILLEGAL_CHARACTERS = { '/', '\n', '\r', '\t', '\0', '\f', '`', '?', '*', '\\', '<', '>', '|', '\"', ':' };
-        for(int i = 0; i < rawFileName.length(); i++) 
-        {
-            if(rawFileName[i] == )
-        }
+        return fileName.replaceAll("[\\\\/:*?\"<>|]", "_");
     }
 
     /**
