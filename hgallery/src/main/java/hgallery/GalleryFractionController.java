@@ -150,7 +150,7 @@ public class GalleryFractionController
                     MessageBoxController.CreateMessageBox("準備你的衛生紙", "想要加入稍後觀看？\n"+hon.getTitle(), ()->
                     {
                         RuntimeSettings.AddReadLater(hon);
-                        MessageBoxController.CreateMessageBox("加入完成", "準備好再開車，安全上路！\n注意：稍後觀看內容再關閉程式後會清空！");
+                        MessageBoxController.CreateMessageBox("加入完成", "準備好再開車，安全上路！");
                     }, true);
                 }
             }
