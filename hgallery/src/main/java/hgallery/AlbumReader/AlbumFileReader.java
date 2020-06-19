@@ -9,6 +9,7 @@ import hgallery.App;
 import hgallery.Debug;
 import hgallery.PageViewController;
 import hgallery.Debug.ConsoleColor;
+import hgallery.File.FileOperate;
 import javafx.scene.image.Image;
 
 public class AlbumFileReader 
@@ -159,6 +160,12 @@ public class AlbumFileReader
 
     public static Image LoadImage(String path)
     {
-        return new Image(path, 0, 1800, true, true, true);
+        Debug.Log("Load Image path="+path);
+        if( FileOperate.GetExtension(path).equals("gif") )
+        {
+            return new Image(path, true);            
+        }
+        else
+            return new Image(path, 0, 1800, true, true, true);
     }
 }

@@ -20,7 +20,7 @@ import hgallery.Settings.SettingManager;
 public class App extends Application 
 {
     public static boolean isExited = false;
-    public static final String version = "v.2.0.8";
+    public static final String version = "v.2.1.2";
 
     public static ArrayList<Thread> runningThreads = new ArrayList<>();
     private static Scene scene;

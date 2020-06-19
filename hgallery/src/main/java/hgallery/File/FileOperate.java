@@ -34,6 +34,18 @@ public class FileOperate
     }
 
     /**
+     * 獲取(小寫)副檔名，找不到會回傳空字串。
+     */
+    public static String GetExtension(String pathOrFileName)
+    {
+        String ext = "";
+        int i = pathOrFileName.lastIndexOf('.');
+        if(i > 0)
+            ext = pathOrFileName.toLowerCase().substring(i+1);
+        return ext;
+    }
+
+    /**
      * 
      */
     private static File[] GetAlbums(String albumPath)

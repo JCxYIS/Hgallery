@@ -4,12 +4,6 @@ import java.util.ArrayList;
 
 import com.github.ttdyce.model.Comic;
 import com.github.ttdyce.model.api.NHAPI;
-import com.github.ttdyce.model.api.ResponseCallback;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
-import com.google.gson.JsonParser;
 
 import hgallery.Debug.ConsoleColor;
 import hgallery.NHAPI.NhentaiUtility;
